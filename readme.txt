@@ -37,6 +37,11 @@ Use the `[browser-shot]` shortcode to automate the process of taking website scr
 
 The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the [Network Activate](http://codex.wordpress.org/Create_A_Network#WordPress_Plugins) feature to enable the shortcode on every site. If you only want to enable the shortcode for a specific site, activate the plugin for that site only.
 
+= More... =
+
+* The code can be found on [Github](https://github.com/BinaryMoon/browser-shots)
+* You can reach out to me with questions or problems on [Twitter](https://twitter.com/binarymoon)
+
 == Installation ==
 
 1. Install easily with the WordPress plugin control panel or manually download the plugin and upload the folder `browser-shots` to the `/wp-content/plugins/` directory
