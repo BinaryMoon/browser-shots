@@ -1,9 +1,9 @@
 === Browser Screenshots ===
-Contributors: BinaryMoon, kevinlearynet
+Contributors: BinaryMoon, kevinlearynet, ronalfy
 Tags: screenshot, browser, browser shot, blocks, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.5.2
+Stable tag: 1.7.0
 
 Automate the process of taking website screenshots.
 
@@ -54,6 +54,9 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 == Changelog ==
 
+= 1.7 - 8th June 2019 =
+* Add Gutenberg block for including Browser Shots.
+
 = 1.6 - 30th May 2019 =
 * Add rel property to shortcode so that links can include rel="nofollow" or similar.
 * Fix output of target attribute.
@@ -98,3 +101,8 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 = 1.0 =
 * Initial public release to the WordPress plugin repository
+
+== Upgrade Notice ==
+
+= 1.7 =
+Add Gutenberg block for including Browser Shots.
