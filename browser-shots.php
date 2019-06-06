@@ -47,6 +47,9 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			add_shortcode( 'browser-shot', array( $this, 'shortcode' ) );
 			add_action( 'init', array( $this, 'tinymce_button' ) );
 
+			// i18n init
+			$path = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+			load_plugin_textdomain( 'browser-shots', '', $path );
 		}
 
 
