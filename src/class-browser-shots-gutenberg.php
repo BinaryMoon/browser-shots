@@ -57,7 +57,7 @@ class Browser_Shots_Gutenberg {
 			'browsershots',
 			array(
 				'rest_url' => get_rest_url(),
-				'nonce'    => wp_create_nonce( 'browser-shots-get-html' ),
+				'nonce'    => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 
@@ -157,7 +157,7 @@ class Browser_Shots_Gutenberg {
 	 * @see rest_api_register
 	 */
 	public function get_shortcode_contents() {
-		if ( wp_verify_nonce( $_GET['nonce'], 'browser-shots-get-html' ) ) {
+		if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
 			$args         = array(
 				'url'         => esc_url_raw( $_GET['url'] ),
 				'width'       => absint( $_GET['width'] ),

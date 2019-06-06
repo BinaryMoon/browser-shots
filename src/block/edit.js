@@ -62,7 +62,7 @@ class Browser_Shots extends Component {
 				loading: false,
 			} );
 			var rest_url = browsershots.rest_url + 'browsershots/v1/get_html/';
-			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=${this.props.attributes.image_class}&rel=${this.props.attributes.rel}&nonce=${browsershots.nonce}` ).then( ( response ) => {
+			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=${this.props.attributes.image_class}&rel=${this.props.attributes.rel}`, { 'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
 				// Now Set State
 				this.setState( {
 					loading: false,
