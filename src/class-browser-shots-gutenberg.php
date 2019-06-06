@@ -3,8 +3,9 @@
  * Blocks Initializer
  *
  * Enqueue CSS/JS of all the blocks.
+ * Also register rest route and initialize Gutenberg block.
  *
- * @since   1.0.0
+ * @since   2.7.0
  * @package browser-shots
  */
 
@@ -13,12 +14,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 class Browser_Shots_Gutenberg {
+	/**
+	 * Initialize actions for Gutenberg.
+	 *
+	 * @since 2.7.0
+	 */
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'browser_shots_block_assets' ) );
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_register' ) );
 	}
 
+	/**
+	 * Enqueue Gutenberg block assets for backend editor.
+	 *
+	 * @uses {wp-blocks} for block type registration & related functions.
+	 * @uses {wp-element} for WP Element abstraction — structure of blocks.
+	 * @uses {wp-i18n} to internationalize the block's text.
+	 * @uses {wp-editor} for WP editor styles.
+	 * @since 2.7.0
+	 */
 	public function browser_shots_block_assets() {
 		// Styles
 		wp_enqueue_style(
@@ -59,6 +74,11 @@ class Browser_Shots_Gutenberg {
 		}
 	}
 
+	/**
+	 * Registers the block in PHP and its attributes.
+	 *
+	 * @since 2.7.0
+	 */
 	public function register_block() {
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
@@ -113,6 +133,11 @@ class Browser_Shots_Gutenberg {
 		);
 	}
 
+	/**
+	 * Registers the rest route for retrieving the browswer shot.
+	 *
+	 * @since 2.7.0
+	 */
 	public function rest_api_register() {
 		register_rest_route(
 			'browsershots/v1',
@@ -124,6 +149,12 @@ class Browser_Shots_Gutenberg {
 		);
 	}
 
+	/**
+	 * Rest callback. Gets the Browser Shot shortcode output.
+	 *
+	 * @since 2.7.0
+	 * @see rest_api_register
+	 */
 	public function get_shortcode_contents() {
 		$args         = array(
 			'url'         => $_GET['url'],
@@ -140,6 +171,14 @@ class Browser_Shots_Gutenberg {
 		die( $browsershots->shortcode( $args ) );
 	}
 
+	/**
+	 * Block front-end output.
+	 *
+	 * @since 2.7.0
+	 * @see register_block
+	 *
+	 * @param array $attributes Array of passed shortcode attributes.
+	 */
 	public function block_frontend( $attributes ) {
 		if ( is_admin() ) {
 			return;
