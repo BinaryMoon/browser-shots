@@ -107,9 +107,14 @@ class Browser_Shots extends Component {
 
 		const resetSelect = [
 			{
-				icon: 'update',
-				title: __( 'Reset', 'browser-shots' ),
+				icon: 'edit',
+				title: __( 'Edit URL', 'browser-shots' ),
 				onClick: () => this.setState( { loading: true } )
+			},
+			{
+				icon: 'update',
+				title: __( 'Refresh Image', 'browser-shots' ),
+				onClick: ( e ) => this.pluginOnClick( e )
 			}
 		];
 
