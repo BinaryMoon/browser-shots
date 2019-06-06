@@ -7,7 +7,9 @@
 		"build": "cgb-scripts build",
 		"eject": "cgb-scripts eject"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"po2json": "^1.0.0-alpha"
+	},
 	"devDependencies": {
 		"axios": "^0.18.0",
 		"cgb-scripts": "^1.17.0",

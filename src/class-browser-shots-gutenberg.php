@@ -61,15 +61,15 @@ class Browser_Shots_Gutenberg {
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( 'browser-shots-block-js', 'browsershots' );
+			wp_set_script_translations( 'browser-shots-block-js', 'browser-shots' );
 		} elseif ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
-			$locale  = gutenberg_get_jed_locale_data( 'browsershots' );
+			$locale  = gutenberg_get_jed_locale_data( 'browser-shots' );
 			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browsershots" );';
 			wp_script_add_data( 'browser-shots-block-js', 'data', $content );
 		} elseif ( function_exists( 'wp_get_jed_locale_data' ) ) {
 			/* for 5.0 */
-			$locale  = wp_get_jed_locale_data( 'browsershots' );
-			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browsershots" );';
+			$locale  = wp_get_jed_locale_data( 'browser-shots' );
+			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browser-shots" );';
 			wp_script_add_data( 'browser-shots-block-js', 'data', $content );
 		}
 	}

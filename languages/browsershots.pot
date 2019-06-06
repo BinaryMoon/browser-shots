@@ -1,0 +1,35 @@
+# Copyright (C) 2019 Ben Gillbanks
+# This file is distributed under the same license as the Browser Shots plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Browser Shots 1.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/browser-shots\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-06-06T03:38:46+00:00\n"
+"PO-Revision-Date: 2019-06-06T03:38:46+00:00\n"
+"X-Generator: WP-CLI 2.0.1\n"
+"X-Domain: browser-shots\n"
+
+#. Plugin Name of the plugin
+msgid "Browser Shots"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/browser-shots/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Easily take dynamic screenshots of a website inside of WordPress"
+msgstr ""
+
+#. Author of the plugin
+msgid "Ben Gillbanks"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://prothemedesign.com"
+msgstr ""

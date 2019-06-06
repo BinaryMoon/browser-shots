@@ -86,23 +86,29 @@ class Browser_Shots extends Component {
 		let htmlToReactParser = new HtmlToReactParser();
 
 		const targetOptions = [
-			{ value: '_self', label: __('None', 'browsershots' ) },
-			{ value: '_blank', label: __('Blank', 'browsershots' ) },
-			{ value: '_parent', label: __('Parent', 'browsershots' ) },
-			{ value: '_self', label: __('Self', 'browsershots' ) },
-			{ value: '_top', label: __('Top', 'browsershots' ) }
+			{ value: '_self', label: __('None', 'browser-shots' ) },
+			{ value: '_blank', label: __('Blank', 'browser-shots' ) },
+			{ value: '_parent', label: __('Parent', 'browser-shots' ) },
+			{ value: '_self', label: __('Self', 'browser-shots' ) },
+			{ value: '_top', label: __('Top', 'browser-shots' ) }
 		];
+
 		const alignOptions = [
-			{ value: 'alignnone', label: __('None', 'browsershots' ) },
-			{ value: 'alignleft', label: __('Left', 'browsershots' ) },
-			{ value: 'aligncenter', label: __('Center', 'browsershots' ) },
-			{ value: 'alignright', label: __('Right', 'browsershots' ) }
+			{ value: 'alignnone', label: __('None', 'browser-shots' ) },
+			{ value: 'alignleft', label: __('Left', 'browser-shots' ) },
+			{ value: 'aligncenter', label: __('Center', 'browser-shots' ) },
+			{ value: 'alignright', label: __('Right', 'browser-shots' ) }
+		];
+
+		const relOptions = [
+			{ value: '', label: __('None', 'browser-shots' ) },
+			{ value: 'nofollow', label: __('No Follow', 'browser-shots' ) }
 		];
 
 		const resetSelect = [
 			{
 				icon: 'update',
-				title: __( 'Reset', 'browsershots' ),
+				title: __( 'Reset', 'browser-shots' ),
 				onClick: () => this.setState( { loading: true } )
 			}
 		];
@@ -110,62 +116,62 @@ class Browser_Shots extends Component {
 		const pluginOnClick = this.pluginOnClick;
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Browser Shots', 'browsershots' ) }>
+				<PanelBody title={ __( 'Browser Shots', 'browser-shots' ) }>
 					<RangeControl
-						label={__('Width', 'browsershots')}
+						label={__('Width', 'browser-shots')}
 						value={ width }
 						onChange={ ( value ) => { this.props.setAttributes( { width: value } ); } }
 						min={ 100 }
 						max={ 1000 }
 					/>
 					<RangeControl
-						label={__('Height', 'browsershots')}
+						label={__('Height', 'browser-shots')}
 						value={ height }
 						onChange={ ( value ) => { this.props.setAttributes( { height: value } ); } }
 						min={ 100 }
 						max={ 1000 }
 					/>
 					<TextControl
-						label={ __( 'Alt Text',  'browsershots' ) }
+						label={ __( 'Alt Text',  'browser-shots' ) }
 						type="text"
 						value={ alt }
 						onChange={ ( value ) => { this.props.setAttributes( { alt: value });  } }
 					/>
 					<TextControl
-						label={ __( 'Link Image to URL',  'browsershots' ) }
+						label={ __( 'Link Image to URL',  'browser-shots' ) }
 						type="text"
 						value={ link }
 						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
 					/>
 					<SelectControl
-							label={ __( 'Target', 'browsershots' ) }
+							label={ __( 'Target', 'browser-shots' ) }
 							options={ targetOptions }
 							value={ target }
 							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
 					/>
 					<TextControl
-						label={ __( 'CSS Class Name',  'browsershots' ) }
+						label={ __( 'CSS Class Name',  'browser-shots' ) }
 						type="text"
 						value={ classname }
 						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
 					/>
 					<SelectControl
-							label={ __( 'Image Alignment', 'browsershots' ) }
+							label={ __( 'Image Alignment', 'browser-shots' ) }
 							options={ alignOptions }
 							value={ image_class }
 							onChange={ ( value ) => { this.props.setAttributes( { image_class: value } ); } }
 					/>
-					<TextControl
-						label={ __( 'Rel Attribute',  'browsershots' ) }
-						type="text"
-						value={ rel }
-						onChange={ ( value ) => { this.props.setAttributes( { rel: value });  } }
+					<SelectControl
+							label={ __( 'Rel', 'browser-shots' ) }
+							options={ relOptions }
+							value={ rel }
+							onChange={ ( value ) => { this.props.setAttributes( { rel: value } ); } }
 					/>
 					<Button
 						onClick={ ( e ) => { this.pluginOnClick(e)  } }
 						isDefault
 					>
-						{ __( 'Refresh Image',  'browsershots' ) }
+						{ __( 'Refresh Image',  'browser-shots' ) }
 					</Button>
 
 				</PanelBody>
@@ -178,13 +184,13 @@ class Browser_Shots extends Component {
 						<Placeholder>
 							<div className="browsershots-block">
 								<div>
-									<label htmlFor="browser-shots-url">{__( 'Enter a URL', 'browsershots' )}</label>
+									<label htmlFor="browser-shots-url">{__( 'Enter a URL', 'browser-shots' )}</label>
 								</div>
 								<div>
 									<input type="text" id="browser-shots-url" value={this.state.url} onChange={ ( event ) => { this.props.setAttributes( { url: event.target.value } ); this.urlChange(event); } } />
 								</div>
 								<div>
-									<input className="button button-primary" style={{marginTop: '25px'}} type="submit" id="browsershots-input-submit" value={__( 'Find Image', 'browsershots' )} onClick={ ( event ) => { this.pluginOnClick(event); } }  />
+									<input className="button button-primary" style={{marginTop: '25px'}} type="submit" id="browsershots-input-submit" value={__( 'Find Image', 'browser-shots' )} onClick={ ( event ) => { this.pluginOnClick(event); } }  />
 								</div>
 							</div>
 						</Placeholder>
