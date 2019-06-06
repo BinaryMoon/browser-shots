@@ -20,6 +20,15 @@ class Browser_Shots_Gutenberg {
 	}
 
 	public function browser_shots_block_assets() {
+		// Styles
+		wp_enqueue_style(
+			'browser-shots-block-css', // Handle.
+			plugins_url( '/dist/blocks.editor.build.css', dirname( __FILE__ ) ),
+			array(),
+			BROWSER_SHOTS_VERSION,
+			false // Enqueue the script in the footer.
+		);
+
 		// Scripts.
 		wp_enqueue_script(
 			'browser-shots-block-js', // Handle.

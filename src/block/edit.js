@@ -15,13 +15,12 @@ const {
 	TextControl,
 	RangeControl,
 	Toolbar,
+	Button,
 } = wp.components;
 
 const {
 	InspectorControls,
 	BlockControls,
-	BlockAlignmentToolbar,
-	AlignmentToolbar,
 } = wp.editor;
 
 
@@ -59,7 +58,8 @@ class Browser_Shots extends Component {
 	pluginOnClick = (event) => {
 		if( '' !== this.state.url ) {
 			this.setState( {
-				imageLoading: true
+				imageLoading: true,
+				loading: false,
 			} );
 			var rest_url = browsershots.rest_url + 'browsershots/v1/get_html/';
 			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=${this.props.attributes.image_class}&rel=${this.props.attributes.rel}` ).then( ( response ) => {
@@ -86,10 +86,17 @@ class Browser_Shots extends Component {
 		let htmlToReactParser = new HtmlToReactParser();
 
 		const targetOptions = [
+			{ value: '_self', label: __('None', 'browsershots' ) },
 			{ value: '_blank', label: __('Blank', 'browsershots' ) },
 			{ value: '_parent', label: __('Parent', 'browsershots' ) },
 			{ value: '_self', label: __('Self', 'browsershots' ) },
 			{ value: '_top', label: __('Top', 'browsershots' ) }
+		];
+		const alignOptions = [
+			{ value: 'alignnone', label: __('None', 'browsershots' ) },
+			{ value: 'alignleft', label: __('Left', 'browsershots' ) },
+			{ value: 'aligncenter', label: __('Center', 'browsershots' ) },
+			{ value: 'alignright', label: __('Right', 'browsershots' ) }
 		];
 
 		const resetSelect = [
@@ -142,11 +149,11 @@ class Browser_Shots extends Component {
 						value={ classname }
 						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
 					/>
-					<TextControl
-						label={ __( 'Image Class',  'browsershots' ) }
-						type="text"
-						value={ image_class }
-						onChange={ ( value ) => { this.props.setAttributes( { image_class: value });  } }
+					<SelectControl
+							label={ __( 'Image Alignment', 'wp-plugin-info-card' ) }
+							options={ alignOptions }
+							value={ image_class }
+							onChange={ ( value ) => { this.props.setAttributes( { image_class: value } ); } }
 					/>
 					<TextControl
 						label={ __( 'Rel Attribute',  'browsershots' ) }
@@ -154,6 +161,12 @@ class Browser_Shots extends Component {
 						value={ rel }
 						onChange={ ( value ) => { this.props.setAttributes( { rel: value });  } }
 					/>
+					<Button
+						onClick={ ( e ) => { this.pluginOnClick(e)  } }
+						isDefault
+					>
+						{ __( 'Refresh Image',  'browsershots' ) }
+					</Button>
 
 				</PanelBody>
 			</InspectorControls>
@@ -165,7 +178,7 @@ class Browser_Shots extends Component {
 						<Placeholder>
 							<div className="browsershots-block">
 								<div>
-									<h3><label htmlFor="browser-shots-url">{__( 'Enter a URL', 'wp-plugin-info-card' )}</label></h3>
+									<label htmlFor="browser-shots-url">{__( 'Enter a URL', 'wp-plugin-info-card' )}</label>
 								</div>
 								<div>
 									<input type="text" id="browser-shots-url" value={this.state.url} onChange={ ( event ) => { this.props.setAttributes( { url: event.target.value } ); this.urlChange(event); } } />
@@ -187,7 +200,7 @@ class Browser_Shots extends Component {
 							<BlockControls>
 								<Toolbar controls={ resetSelect } />
 							</BlockControls>
-							<div>
+							<div className="browser-shots-gutenberg-wrapper" style={{textAlign: 'aligncenter' == image_class ? 'center' : ''}}>
 								{htmlToReactParser.parse(this.state.html)}
 							</div>
 						</Fragment>
