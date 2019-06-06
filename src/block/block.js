@@ -44,6 +44,7 @@ registerBlockType( 'browser-shots/browser-shots', {
 	keywords: [
 		__( 'Browser Shots', 'browsershots' ),
 		__( 'website', 'browsershots' ),
+		__( 'screenshot', 'browsershots' )
 	],
 	edit: edit,
 
