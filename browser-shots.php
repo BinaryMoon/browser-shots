@@ -11,6 +11,9 @@
  * @package browser-shots
  */
 
+// Define variable for JS and CSS versioning
+define( 'BROWSER_SHOTS_VERSION', '1.6' );
+
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -227,5 +230,6 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 
 	new BrowserShots();
 
-}
+	include 'src/class-browser-shots-gutenberg.php';
 
+}
