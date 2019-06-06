@@ -46,10 +46,16 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 
 			add_shortcode( 'browser-shot', array( $this, 'shortcode' ) );
 			add_action( 'init', array( $this, 'tinymce_button' ) );
+			add_action( 'plugins_loaded', array( $this, 'load_plugin_text_domain' ) );
+		}
 
-			// i18n init
-			$path = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
-			load_plugin_textdomain( 'browser-shots', '', $path );
+		/**
+		 * Load plugin text domain
+		 *
+		 */
+		public function load_plugin_text_domain() {
+			// i18n init.
+			load_plugin_textdomain( 'browser-shots', '', basename( dirname( __FILE__ ) ) . '/languages' );
 		}
 
 
