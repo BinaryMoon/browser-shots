@@ -57,6 +57,7 @@ class Browser_Shots_Gutenberg {
 			'browsershots',
 			array(
 				'rest_url' => get_rest_url(),
+				'nonce'    => wp_create_nonce( 'browser-shots-get-html' ),
 			)
 		);
 
@@ -156,19 +157,23 @@ class Browser_Shots_Gutenberg {
 	 * @see rest_api_register
 	 */
 	public function get_shortcode_contents() {
-		$args         = array(
-			'url'         => $_GET['url'],
-			'width'       => $_GET['width'],
-			'height'      => $_GET['height'],
-			'alt'         => $_GET['alt'],
-			'link'        => $_GET['link'],
-			'target'      => $_GET['target'],
-			'class'       => $_GET['class'],
-			'image_class' => $_GET['image_class'],
-			'rel'         => $_GET['rel'],
-		);
-		$browsershots = new BrowserShots();
-		die( $browsershots->shortcode( $args ) );
+		if ( wp_verify_nonce( $_GET['nonce'], 'browser-shots-get-html' ) ) {
+			$args         = array(
+				'url'         => esc_url_raw( $_GET['url'] ),
+				'width'       => absint( $_GET['width'] ),
+				'height'      => absint( $_GET['height'] ),
+				'alt'         => sanitize_text_field( $_GET['alt'] ),
+				'link'        => ! empty( $_GET['link'] ) ? esc_url_raw( $_GET['link'] ) : '',
+				'target'      => sanitize_text_field( $_GET['target'] ),
+				'class'       => sanitize_text_field( $_GET['class'] ),
+				'image_class' => sanitize_text_field( $_GET['image_class'] ),
+				'rel'         => sanitize_text_field( $_GET['rel'] ),
+				'nolink'      => true,
+			);
+			$browsershots = new BrowserShots();
+			die( wp_kses_post( $browsershots->shortcode( $args ) ) );
+		}
+		die( esc_html__( 'Browser Shots could not retrieve the image', 'browser-shots' ) );
 	}
 
 	/**
@@ -184,18 +189,18 @@ class Browser_Shots_Gutenberg {
 			return;
 		}
 		$args         = array(
-			'url'         => $attributes['url'],
-			'width'       => $attributes['width'],
-			'height'      => $attributes['height'],
-			'alt'         => $attributes['alt'],
-			'link'        => $attributes['link'],
-			'target'      => $attributes['target'],
-			'class'       => $attributes['classname'],
-			'image_class' => $attributes['image_class'],
-			'rel'         => $attributes['rel'],
+			'url'         => esc_url_raw( $attributes['url'] ),
+			'width'       => absint( $attributes['width'] ),
+			'height'      => absint( $attributes['height'] ),
+			'alt'         => sanitize_text_field( $attributes['alt'] ),
+			'link'        => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
+			'target'      => sanitize_text_field( $attributes['target'] ),
+			'class'       => sanitize_text_field( $attributes['classname'] ),
+			'image_class' => sanitize_text_field( $attributes['image_class'] ),
+			'rel'         => sanitize_text_field( $attributes['rel'] ),
 		);
 		$browsershots = new BrowserShots();
-		return $browsershots->shortcode( $args );
+		return wp_kses_post( $browsershots->shortcode( $args ) );
 	}
 }
 new Browser_Shots_Gutenberg();
