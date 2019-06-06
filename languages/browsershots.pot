@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the Browser Shots plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Browser Shots 1.6\n"
+"Project-Id-Version: Browser Shots 1.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/browser-shots\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-06-06T03:38:46+00:00\n"
-"PO-Revision-Date: 2019-06-06T03:38:46+00:00\n"
+"POT-Creation-Date: 2019-06-06T03:47:20+00:00\n"
+"PO-Revision-Date: 2019-06-06T03:47:20+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: browser-shots\n"
 
 #. Plugin Name of the plugin
+#: dist/blocks.build.js:1
 msgid "Browser Shots"
 msgstr ""
 
@@ -32,4 +33,116 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://prothemedesign.com"
+msgstr ""
+
+#: locale.php:18
+msgid "Image Url"
+msgstr ""
+
+#: locale.php:19
+msgid "Image Link Url (optional)"
+msgstr ""
+
+#: locale.php:20
+msgid "Image Width"
+msgstr ""
+
+#: locale.php:21
+msgid "Image Height"
+msgstr ""
+
+#: locale.php:22
+msgid "Image Caption"
+msgstr ""
+
+#: locale.php:23
+msgid "Image Alt Text"
+msgstr ""
+
+#: locale.php:24
+msgid "Open Link in new Window?"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "None"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Blank"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Parent"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Self"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Top"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Left"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Center"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Right"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "No Follow"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Reset"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Width"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Height"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Alt Text"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Link Image to URL"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Target"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "CSS Class Name"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Image Alignment"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Rel"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Refresh Image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Enter a URL"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Find Image"
 msgstr ""
