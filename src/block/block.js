@@ -28,9 +28,10 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( 'browser-shots/browser-shots', {
+
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Browser Shots', 'browsershots' ),
-	description: __( 'Automattically embed screenshots of websites onto your site.', 'browsershots' ),
+	title: __( 'Browser Shots', 'browser-shots' ),
+	description: __( 'Automattically embed screenshots of websites onto your site.', 'browser-shots' ),
 	icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill-rule="evenodd">
 	<path d="M18,5 L4,5 L4,19 L2,19 L2,5 C2,3.8954305 2.8954305,3 4,3 L18,3 L18,5 Z"/>
@@ -42,9 +43,9 @@ registerBlockType( 'browser-shots/browser-shots', {
 	className: 'browser-shots-block',
 	category: 'embed', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'Browser Shots', 'browsershots' ),
-		__( 'website', 'browsershots' ),
-		__( 'screenshot', 'browsershots' )
+		__( 'Browser Shots', 'browser-shots' ),
+		__( 'website', 'browser-shots' ),
+		__( 'screenshot', 'browser-shots' )
 	],
 	edit: edit,
 
