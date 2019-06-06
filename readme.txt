@@ -1,6 +1,6 @@
 === Browser Screenshots ===
 Contributors: BinaryMoon, kevinlearynet
-Tags: screenshot, browser, browser shot, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
+Tags: screenshot, browser, browser shot, blocks, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
 Requires at least: 4.0
 Tested up to: 5.2
 Stable tag: 1.5.2

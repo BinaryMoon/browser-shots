@@ -138,7 +138,7 @@ class Browser_Shots extends Component {
 						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
 					/>
 					<SelectControl
-							label={ __( 'Target', 'wp-plugin-info-card' ) }
+							label={ __( 'Target', 'browsershots' ) }
 							options={ targetOptions }
 							value={ target }
 							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
@@ -150,7 +150,7 @@ class Browser_Shots extends Component {
 						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
 					/>
 					<SelectControl
-							label={ __( 'Image Alignment', 'wp-plugin-info-card' ) }
+							label={ __( 'Image Alignment', 'browsershots' ) }
 							options={ alignOptions }
 							value={ image_class }
 							onChange={ ( value ) => { this.props.setAttributes( { image_class: value } ); } }
@@ -178,7 +178,7 @@ class Browser_Shots extends Component {
 						<Placeholder>
 							<div className="browsershots-block">
 								<div>
-									<label htmlFor="browser-shots-url">{__( 'Enter a URL', 'wp-plugin-info-card' )}</label>
+									<label htmlFor="browser-shots-url">{__( 'Enter a URL', 'browsershots' )}</label>
 								</div>
 								<div>
 									<input type="text" id="browser-shots-url" value={this.state.url} onChange={ ( event ) => { this.props.setAttributes( { url: event.target.value } ); this.urlChange(event); } } />
