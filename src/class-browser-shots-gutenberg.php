@@ -65,7 +65,7 @@ class Browser_Shots_Gutenberg {
 			wp_set_script_translations( 'browser-shots-block-js', 'browser-shots' );
 		} elseif ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
 			$locale  = gutenberg_get_jed_locale_data( 'browser-shots' );
-			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browsershots" );';
+			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browser-shots" );';
 			wp_script_add_data( 'browser-shots-block-js', 'data', $content );
 		} elseif ( function_exists( 'wp_get_jed_locale_data' ) ) {
 			/* for 5.0 */
@@ -122,7 +122,7 @@ class Browser_Shots_Gutenberg {
 					),
 					'image_class' => array(
 						'type'    => 'string',
-						'default' => 'alignnone',
+						'default' => 'center',
 					),
 					'rel'         => array(
 						'type'    => 'string',
@@ -196,7 +196,7 @@ class Browser_Shots_Gutenberg {
 			'link'        => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
 			'target'      => sanitize_text_field( $attributes['target'] ),
 			'class'       => sanitize_text_field( $attributes['classname'] ),
-			'image_class' => sanitize_text_field( $attributes['image_class'] ),
+			'image_class' => sanitize_text_field( 'align' . $attributes['image_class'] ),
 			'rel'         => sanitize_text_field( $attributes['rel'] ),
 		);
 		$browsershots = new BrowserShots();

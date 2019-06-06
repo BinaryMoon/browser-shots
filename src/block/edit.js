@@ -3,6 +3,7 @@
  */
 import axios from 'axios';
 var HtmlToReactParser = require('html-to-react').Parser;
+import classnames from 'classnames';
 const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
@@ -21,6 +22,7 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
+	AlignmentToolbar,
 } = wp.editor;
 
 
@@ -43,18 +45,6 @@ class Browser_Shots extends Component {
 		};
 	}
 
-	slugChange = (event) => {
-		this.setState( {
-			slug: event.target.value
-		} );
-	}
-
-	typeChange = (event) => {
-		this.setState( {
-			type: event.target.value
-		} );
-	}
-
 	pluginOnClick = (event) => {
 		if( '' !== this.state.url ) {
 			this.setState( {
@@ -62,7 +52,7 @@ class Browser_Shots extends Component {
 				loading: false,
 			} );
 			var rest_url = browsershots.rest_url + 'browsershots/v1/get_html/';
-			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=${this.props.attributes.image_class}&rel=${this.props.attributes.rel}`, { 'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
+			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=align${this.props.attributes.image_class}&rel=${this.props.attributes.rel}`, { 'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
 				// Now Set State
 				this.setState( {
 					loading: false,
@@ -82,7 +72,7 @@ class Browser_Shots extends Component {
 
 	render() {
 		const { attributes } = this.props;
-		const { url, width, height, alt, link, target, classname, image_class, rel} = attributes;
+		const { width, height, alt, link, target, classname, image_class, rel} = attributes;
 		let htmlToReactParser = new HtmlToReactParser();
 
 		const targetOptions = [
@@ -91,13 +81,6 @@ class Browser_Shots extends Component {
 			{ value: '_parent', label: __('Parent', 'browser-shots' ) },
 			{ value: '_self', label: __('Self', 'browser-shots' ) },
 			{ value: '_top', label: __('Top', 'browser-shots' ) }
-		];
-
-		const alignOptions = [
-			{ value: 'alignnone', label: __('None', 'browser-shots' ) },
-			{ value: 'alignleft', label: __('Left', 'browser-shots' ) },
-			{ value: 'aligncenter', label: __('Center', 'browser-shots' ) },
-			{ value: 'alignright', label: __('Right', 'browser-shots' ) }
 		];
 
 		const relOptions = [
@@ -118,7 +101,6 @@ class Browser_Shots extends Component {
 			}
 		];
 
-		const pluginOnClick = this.pluginOnClick;
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Browser Shots', 'browser-shots' ) }>
@@ -159,12 +141,6 @@ class Browser_Shots extends Component {
 						type="text"
 						value={ classname }
 						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
-					/>
-					<SelectControl
-							label={ __( 'Image Alignment', 'browser-shots' ) }
-							options={ alignOptions }
-							value={ image_class }
-							onChange={ ( value ) => { this.props.setAttributes( { image_class: value } ); } }
 					/>
 					<SelectControl
 							label={ __( 'Rel', 'browser-shots' ) }
@@ -218,8 +194,25 @@ class Browser_Shots extends Component {
 							{inspectorControls}
 							<BlockControls>
 								<Toolbar controls={ resetSelect } />
+								<AlignmentToolbar
+									value={ image_class }
+									onChange={
+										( value ) => {
+											this.props.attributes.image_class = value;
+											this.props.setAttributes( { image_class: value } );
+											this.pluginOnClick(value);
+										}
+									}
+								/>
 							</BlockControls>
-							<div className="browser-shots-gutenberg-wrapper" style={{textAlign: 'aligncenter' == image_class ? 'center' : ''}}>
+							<div
+								className={
+									classnames(
+										'browser-shots-gutenberg-wrapper',
+										'align' + image_class,
+									)
+								}
+							>
 								{htmlToReactParser.parse(this.state.html)}
 							</div>
 						</Fragment>

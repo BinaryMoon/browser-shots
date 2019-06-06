@@ -3,3 +3,23 @@
   display: table;
   clear: both;
 }
+.browser-shots-gutenberg-wrapper {
+  &.aligncenter {
+    float: none;
+    .browser-shot {
+      text-align: center;
+    }
+  }
+  &.alignleft {
+    float: none;
+    .browser-shot {
+      text-align: left;
+    }
+  }
+  &.alignright {
+    float: none;
+    .browser-shot {
+      text-align: right;
+    }
+  }
+}
