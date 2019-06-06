@@ -1,10 +1,1 @@
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-.browser-shots-gutenberg-wrapper:after {
-  content: "";
-  display: table;
-  clear: both; }
+.browser-shots-gutenberg-wrapper:after{content:"";display:table;clear:both}
