@@ -2,13 +2,13 @@
  * Browser Shots TinyMCE Integration
  */
 
-;(function() {
+; ( function() {
 	var properties = [];
 	var shortcode_name = 'browser-shot';
 	var selection = '';
 
 	tinymce.create( 'tinymce.plugins.browsershots', {
-		init: function(editor, url) {
+		init: function( editor, url ) {
 
 			properties.push(
 				{
@@ -60,19 +60,19 @@
 				}
 			);
 
-			editor.addButton('browsershots', {
+			editor.addButton( 'browsershots', {
 				title: 'Browser Shots',
-				image: url.replace('/js', '/images') + '/browsershots-icon.png',
+				image: url.replace( '/js', '/images' ) + '/browsershots-icon.png',
 				onclick: function() {
 
 					selection = editor.selection.getContent();
 
-					properties[4].value = selection;
+					properties[ 4 ].value = selection;
 
-					editor.windowManager.open({
-                        title: 'Browser Shots',
-                        body: properties,
-                        onsubmit: function (e) {
+					editor.windowManager.open( {
+						title: 'Browser Shots',
+						body: properties,
+						onsubmit: function( e ) {
 
 							// Dialog prompt's
 							var width = e.data.width;
@@ -115,11 +115,11 @@
 								}
 							}
 
-                        }
-                    });
+						}
+					} );
 
 				}
-			});
+			} );
 		},
 		createControl: function() {
 			return null;
@@ -133,8 +133,8 @@
 				version: '1.5.1'
 			};
 		}
-	});
+	} );
 
 	tinymce.PluginManager.add( 'browsershots', tinymce.plugins.browsershots );
 
-})();
+} )();
