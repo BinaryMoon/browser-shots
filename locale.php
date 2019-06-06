@@ -15,12 +15,12 @@ if ( ! class_exists( '_WP_Editors' ) ) {
 $strings = 'tinyMCE.addI18n(
     "' . _WP_Editors::$mce_locale . '.browsershots",
 	{
-		image_url: "' . esc_js( __( 'Image Url', 'browsershots' ) ) . '",
-		image_link_url: "' . esc_js( __( 'Image Link Url (optional)', 'browsershots' ) ) . '",
-		image_width: "' . esc_js( __( 'Image Width', 'browsershots' ) ) . '",
-		image_height: "' . esc_js( __( 'Image Height', 'browsershots' ) ) . '",
-		image_caption: "' . esc_js( __( 'Image Caption', 'browsershots' ) ) . '",
-		image_alt_text: "' . esc_js( __( 'Image Alt Text', 'browsershots' ) ) . '",
-		new_window: "' . esc_js( __( 'Open Link in new Window?', 'browsershots' ) ) . '"
+		image_url: "' . esc_js( __( 'Image Url', 'browser-shots' ) ) . '",
+		image_link_url: "' . esc_js( __( 'Image Link Url (optional)', 'browser-shots' ) ) . '",
+		image_width: "' . esc_js( __( 'Image Width', 'browser-shots' ) ) . '",
+		image_height: "' . esc_js( __( 'Image Height', 'browser-shots' ) ) . '",
+		image_caption: "' . esc_js( __( 'Image Caption', 'browser-shots' ) ) . '",
+		image_alt_text: "' . esc_js( __( 'Image Alt Text', 'browser-shots' ) ) . '",
+		new_window: "' . esc_js( __( 'Open Link in new Window?', 'browser-shots' ) ) . '"
 	}
 )';
