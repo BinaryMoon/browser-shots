@@ -13,10 +13,12 @@ const {
 	Placeholder,
 	SelectControl,
 	TextControl,
+	TextareaControl,
 	Toolbar,
 	Button,
 	ButtonGroup,
 	PanelRow,
+	ExternalLink,
 } = wp.components;
 
 const {
@@ -105,6 +107,20 @@ class Browser_Shots extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Browser Shots', 'browser-shots' ) }>
+					<TextareaControl
+						label={ __( 'Alt Text (Alternative Text)' ) }
+						value={ alt }
+						onChange={ ( value ) => { this.props.setAttributes( { alt: value });  } }
+						help={
+							<div>
+								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+									{ __( 'Describe the purpose of the image', 'browser-shots' ) }
+								</ExternalLink>
+								{ __( 'Leave empty if the image is purely decorative.', 'browser-shots' ) }
+							</div>
+						}
+					/>
+
 					<p>{__( 'Image Dimensions', 'browser-shots' )}</p>
 					<PanelRow className="browser-shots-dimensions">
 						<TextControl
@@ -232,12 +248,6 @@ class Browser_Shots extends Component {
 							{_x( 'Reset', 'Reset Image Size to Default', 'browser-shots' )}
 						</Button>
 					</PanelRow>
-					<TextControl
-						label={ __( 'Alt Text', 'browser-shots' ) }
-						type="text"
-						value={ alt }
-						onChange={ ( value ) => { this.props.setAttributes( { alt: value });  } }
-					/>
 					<TextControl
 						label={ __( 'Link Image to URL', 'browser-shots' ) }
 						type="text"
