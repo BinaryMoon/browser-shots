@@ -309,7 +309,9 @@ class Browser_Shots extends Component {
 						</div>
 					</PanelBody>
 				}
+
 				{this.state.imageLoading &&
+
 					<Placeholder>
 						<div className="browsershots-loading">
 							<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
@@ -321,8 +323,11 @@ class Browser_Shots extends Component {
 							</svg>
 						</div>
 					</Placeholder>
+
 				}
+
 				{!this.state.loading && !this.state.imageLoading &&
+
 					<Fragment>
 						{inspectorControls}
 						<BlockControls>
@@ -346,11 +351,8 @@ class Browser_Shots extends Component {
 								)
 							}
 							style={ {
-								width: width + 'px',
-								height: height + 'px',
 								overflow: 'hidden',
 								maxWidth: '100%',
-								maxHeight: '450px'
 							} }
 						>
 							{htmlToReactParser.parse(this.state.html)}
