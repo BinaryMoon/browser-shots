@@ -180,95 +180,90 @@ class Browser_Shots extends Component {
 							<Button
 								isDefault
 								isPrimary={'small' == image_size ? true : false}
-								onClick={ ( e ) => {
-									this.props.attributes.width = 320;
-									this.props.attributes.height = 240;
-									this.props.attributes.image_size = 'small';
-									this.props.setAttributes(
-										{
-											width: 320,
-											height: 240,
-											image_size: 'small',
-										}
-									);
-									this.pluginOnClick( e );
-								} }
+								onClick={
+									( e ) => {
+										this.props.setAttributes(
+											{
+												width: 320,
+												height: 240,
+												image_size: 'small',
+											}
+										);
+										this.pluginOnClick( e );
+									}
+								}
 							>
 								{_x( 'S', 'Small Image Size', 'browser-shots' )}
 							</Button>
 							<Button
 								isDefault
 								isPrimary={'medium' == image_size ? true : false}
-								onClick={ ( e ) => {
-									this.props.attributes.width = 640;
-									this.props.attributes.height = 450;
-									this.props.attributes.image_size = 'medium';
-									this.props.setAttributes(
-										{
-											width: 640,
-											height: 450,
-											image_size: 'medium',
-										}
-									);
-									this.pluginOnClick( e );
-								} }
+								onClick={
+									( e ) => {
+										this.props.setAttributes(
+											{
+												width: 640,
+												height: 480,
+												image_size: 'medium',
+											}
+										);
+										this.pluginOnClick( e );
+									}
+								}
 							>
 								{_x( 'M', 'Medium Image Size', 'browser-shots' )}
 							</Button>
 							<Button
 								isDefault
 								isPrimary={'large' == image_size ? true : false}
-								onClick={ ( e ) => {
-									this.props.attributes.width = 960;
-									this.props.attributes.height = 720;
-									this.props.attributes.image_size = 'large';
-									this.props.setAttributes(
-										{
-											width: 960,
-											height: 720,
-											image_size: 'large',
-										}
-									);
-									this.pluginOnClick( e );
-								} }
+								onClick={
+									( e ) => {
+										this.props.setAttributes(
+											{
+												width: 960,
+												height: 720,
+												image_size: 'large',
+											}
+										);
+										this.pluginOnClick( e );
+									}
+								}
 							>
 								{_x( 'L', 'Large Image Size', 'browser-shots' )}
 							</Button>
 							<Button
-							isDefault
-							isPrimary={'full' == image_size ? true : false}
-							onClick={ ( e ) => {
-								this.props.attributes.width = 1280;
-								this.props.attributes.height = 960;
-								this.props.attributes.image_size = 'full';
-								this.props.setAttributes(
-									{
-										width: 1280,
-										height: 960,
-										image_size: 'full',
+								isDefault
+								isPrimary={'full' == image_size ? true : false}
+								onClick={
+									( e ) => {
+										this.props.setAttributes(
+											{
+												width: 1280,
+												height: 960,
+												image_size: 'full',
+											}
+										);
+										this.pluginOnClick( e );
 									}
-								);
-								this.pluginOnClick( e );
-							} }
+								}
 							>
 								{_x( 'XL', 'Extra Large Image Size', 'browser-shots' )}
 							</Button>
 						</ButtonGroup>
 						<Button
 							isDefault
-							onClick={ ( e ) => {
-								this.props.attributes.width = 600;
-								this.props.attributes.height = 450;
-								this.props.attributes.image_size = 'medium';
-								this.props.setAttributes(
-									{
-										width: 600,
-										height: 450,
-										image_size: 'medium',
-									}
-								);
-								this.pluginOnClick( e );
-							} }
+							onClick={
+								( e ) => {
+									this.props.setAttributes(
+										{
+											width: 600,
+											height: 450,
+											image_size: 'medium',
+										}
+									);
+									this.pluginOnClick( e );
+								}
+							}
 						>
 							{_x( 'Reset', 'Reset Image Size to Default', 'browser-shots' )}
 						</Button>
