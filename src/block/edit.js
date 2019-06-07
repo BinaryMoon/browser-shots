@@ -15,6 +15,7 @@ const {
 	TextControl,
 	TextareaControl,
 	Toolbar,
+	ToggleControl,
 	Button,
 	ButtonGroup,
 	PanelRow,
@@ -77,14 +78,6 @@ class Browser_Shots extends Component {
 		const { attributes } = this.props;
 		const { width, height, alt, link, target, classname, image_class, rel, image_size} = attributes;
 		let htmlToReactParser = new HtmlToReactParser();
-
-		const targetOptions = [
-			{ value: '_self', label: __('None', 'browser-shots' ) },
-			{ value: '_blank', label: __('Blank', 'browser-shots' ) },
-			{ value: '_parent', label: __('Parent', 'browser-shots' ) },
-			{ value: '_self', label: __('Self', 'browser-shots' ) },
-			{ value: '_top', label: __('Top', 'browser-shots' ) }
-		];
 
 		const relOptions = [
 			{ value: '', label: __('None', 'browser-shots' ) },
@@ -269,18 +262,20 @@ class Browser_Shots extends Component {
 						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
 					/>
 
-					<SelectControl
-							label={ __( 'Target', 'browser-shots' ) }
-							options={ targetOptions }
-							value={ target }
-							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
+					<ToggleControl
+						label={ __( 'Open in New Tab', 'browser-shots' ) }
+						onChange={ ( value ) => {
+							let linkTarget = value ? '_blank' : 'none';
+							this.props.setAttributes( { target: linkTarget } );
+						} }
+						checked={ target === '_blank' }
 					/>
 
 					<SelectControl
-							label={ __( 'Rel', 'browser-shots' ) }
-							options={ relOptions }
-							value={ rel }
-							onChange={ ( value ) => { this.props.setAttributes( { rel: value } ); } }
+						label={ __( 'Rel', 'browser-shots' ) }
+						options={ relOptions }
+						value={ rel }
+						onChange={ ( value ) => { this.props.setAttributes( { rel: value } ); } }
 					/>
 
 				</PanelBody>
