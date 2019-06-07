@@ -255,7 +255,7 @@ class Browser_Shots extends Component {
 
 				</PanelBody>
 
-				<PanelBody title={ __( 'Link Settings', 'browser-shots' ) }>
+				<PanelBody title={ __( 'Link Settings', 'browser-shots' ) } initialOpen={ false }>
 
 					<TextControl
 						label={ __( 'Link Image to URL', 'browser-shots' ) }
