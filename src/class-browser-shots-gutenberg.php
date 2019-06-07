@@ -21,8 +21,29 @@ class Browser_Shots_Gutenberg {
 	 */
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'browser_shots_block_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'add_frontend_styles' ) );
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_register' ) );
+	}
+
+	/**
+	 * Enqueue Gutenberg block assets for backend editor.
+	 *
+	 * @uses {wp-blocks} for block type registration & related functions.
+	 * @uses {wp-element} for WP Element abstraction — structure of blocks.
+	 * @uses {wp-i18n} to internationalize the block's text.
+	 * @uses {wp-editor} for WP editor styles.
+	 * @since 2.7.0
+	 */
+	public function add_frontend_styles() {
+		// Styles
+		wp_enqueue_style(
+			'browser-shots-frontend-css', // Handle.
+			plugins_url( '/dist/blocks.style.build.css', dirname( __FILE__ ) ),
+			array(),
+			BROWSER_SHOTS_VERSION,
+			'all' // Enqueue the script in the footer.
+		);
 	}
 
 	/**
@@ -41,7 +62,7 @@ class Browser_Shots_Gutenberg {
 			plugins_url( '/dist/blocks.editor.build.css', dirname( __FILE__ ) ),
 			array(),
 			BROWSER_SHOTS_VERSION,
-			false // Enqueue the script in the footer.
+			'all' // Enqueue the script in the footer.
 		);
 
 		// Scripts.
