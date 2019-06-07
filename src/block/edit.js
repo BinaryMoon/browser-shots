@@ -65,14 +65,21 @@ class Browser_Shots extends Component {
 			);
 
 			var rest_url = browsershots.rest_url + 'browsershots/v1/get_html/';
-			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=align${this.props.attributes.image_class}&rel=${this.props.attributes.rel}`, { 'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
+
+			axios.get( rest_url + `?url=${ this.props.attributes.url }&width=${ this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&rel=${this.props.attributes.rel}`, {
+				'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
+
 				// Now Set State
-				this.setState( {
-					loading: false,
-					imageLoading: false,
-					html: response.data
-				} );
-				this.props.setAttributes({html: response.data});
+				this.setState(
+					{
+						loading: false,
+						imageLoading: false,
+						html: response.data
+					}
+				);
+
+				this.props.setAttributes( { html: response.data } );
+
 			} );
 		}
 	}
