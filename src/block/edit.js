@@ -25,13 +25,16 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
-	AlignmentToolbar,
+	BlockAlignmentToolbar,
 } = wp.editor;
 
 
 class Browser_Shots extends Component {
+
 	constructor() {
+
 		super( ...arguments );
+
 		this.state = {
 			html: this.props.attributes.html,
 			loading: '' === this.props.attributes.url ? true : false,
@@ -49,12 +52,18 @@ class Browser_Shots extends Component {
 		};
 	}
 
-	pluginOnClick = (event) => {
+
+	pluginOnClick = ( event = null ) => {
+
 		if( '' !== this.state.url ) {
-			this.setState( {
-				imageLoading: true,
-				loading: false,
-			} );
+
+			this.setState(
+				{
+					imageLoading: true,
+					loading: false,
+				}
+			);
+
 			var rest_url = browsershots.rest_url + 'browsershots/v1/get_html/';
 			axios.get(rest_url + `?url=${this.props.attributes.url}&width=${this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&image_class=align${this.props.attributes.image_class}&rel=${this.props.attributes.rel}`, { 'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
 				// Now Set State
@@ -68,13 +77,18 @@ class Browser_Shots extends Component {
 		}
 	}
 
-	urlChange = (event) => {
-		this.setState( {
-			url: event.target.value
-		} );
+
+	urlChange = ( event ) => {
+		this.setState(
+			{
+				url: event.target.value
+			}
+		);
+	}
 	}
 
 	render() {
+
 		const { attributes } = this.props;
 		const { width, height, alt, link, target, classname, image_class, rel, image_size } = attributes;
 		let htmlToReactParser = new HtmlToReactParser();
@@ -106,7 +120,7 @@ class Browser_Shots extends Component {
 					<TextareaControl
 						label={ __( 'Alt Text (Alternative Text)' ) }
 						value={ alt }
-						onChange={ ( value ) => { this.props.setAttributes( { alt: value });  } }
+						onChange={ ( value ) => { this.props.setAttributes( { alt: value } );  } }
 						help={
 							<div>
 								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
@@ -117,7 +131,7 @@ class Browser_Shots extends Component {
 						}
 					/>
 
-					<p>{__( 'Image Dimensions', 'browser-shots' )}</p>
+					<p>{ __( 'Image Dimensions', 'browser-shots' ) }</p>
 					<PanelRow className="browser-shots-dimensions">
 						<TextControl
 							type="number"
@@ -247,7 +261,7 @@ class Browser_Shots extends Component {
 					</PanelRow>
 
 					<Button
-						onClick={ ( e ) => { this.pluginOnClick(e)  } }
+						onClick={ ( e ) => { this.pluginOnClick( e )  } }
 						isDefault
 					>
 						{ __( 'Refresh Image', 'browser-shots' ) }
@@ -283,7 +297,9 @@ class Browser_Shots extends Component {
 				</PanelBody>
 			</InspectorControls>
 		);
+
 		return(
+
 			<Fragment>
 				{this.state.loading &&
 					<PanelBody>
@@ -340,10 +356,12 @@ class Browser_Shots extends Component {
 									'align' + image_class,
 								)
 							}
-							style={ {
-								overflow: 'hidden',
-								maxWidth: '100%',
-							} }
+							style={
+								{
+									overflow: 'hidden',
+									maxWidth: '100%',
+								}
+							}
 						>
 							{ htmlToReactParser.parse( this.state.html ) }
 						</div>
