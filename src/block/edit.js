@@ -76,7 +76,7 @@ class Browser_Shots extends Component {
 
 	render() {
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, classname, image_class, rel, image_size} = attributes;
+		const { width, height, alt, link, target, classname, image_class, rel, image_size } = attributes;
 		let htmlToReactParser = new HtmlToReactParser();
 
 		const relOptions = [
@@ -153,8 +153,8 @@ class Browser_Shots extends Component {
 								isDefault
 								isPrimary={'small' == image_size ? true : false}
 								onClick={ ( e ) => {
-									this.props.attributes.width = 200;
-									this.props.attributes.height = 250;
+									this.props.attributes.width = 320;
+									this.props.attributes.height = 240;
 									this.props.attributes.image_size = 'small';
 									this.props.setAttributes(
 										{
@@ -172,8 +172,8 @@ class Browser_Shots extends Component {
 								isDefault
 								isPrimary={'medium' == image_size ? true : false}
 								onClick={ ( e ) => {
-									this.props.attributes.width = 600;
-									this.props.attributes.height = 480;
+									this.props.attributes.width = 640;
+									this.props.attributes.height = 450;
 									this.props.attributes.image_size = 'medium';
 									this.props.setAttributes(
 										{
@@ -196,8 +196,8 @@ class Browser_Shots extends Component {
 									this.props.attributes.image_size = 'large';
 									this.props.setAttributes(
 										{
-											width: 800,
-											height: 650,
+											width: 960,
+											height: 720,
 											image_size: 'large',
 										}
 									);
@@ -310,7 +310,7 @@ class Browser_Shots extends Component {
 					</PanelBody>
 				}
 
-				{this.state.imageLoading &&
+				{ this.state.imageLoading &&
 
 					<Placeholder>
 						<div className="browsershots-loading">
@@ -326,7 +326,7 @@ class Browser_Shots extends Component {
 
 				}
 
-				{!this.state.loading && !this.state.imageLoading &&
+				{ !this.state.loading && !this.state.imageLoading &&
 
 					<Fragment>
 						{inspectorControls}
@@ -338,7 +338,7 @@ class Browser_Shots extends Component {
 									( value ) => {
 										this.props.attributes.image_class = value;
 										this.props.setAttributes( { image_class: value } );
-										this.pluginOnClick(value);
+										this.pluginOnClick( value );
 									}
 								}
 							/>
@@ -355,7 +355,7 @@ class Browser_Shots extends Component {
 								maxWidth: '100%',
 							} }
 						>
-							{htmlToReactParser.parse(this.state.html)}
+							{ htmlToReactParser.parse( this.state.html ) }
 						</div>
 					</Fragment>
 				}
