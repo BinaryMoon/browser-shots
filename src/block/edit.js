@@ -145,8 +145,8 @@ class Browser_Shots extends Component {
 									this.props.attributes.image_size = 'small';
 									this.props.setAttributes(
 										{
-											width: 200,
-											height: 250,
+											width: 320,
+											height: 240,
 											image_size: 'small',
 										}
 									);
@@ -160,11 +160,11 @@ class Browser_Shots extends Component {
 								isPrimary={'medium' == image_size ? true : false}
 								onClick={ ( e ) => {
 									this.props.attributes.width = 600;
-									this.props.attributes.height = 450;
+									this.props.attributes.height = 480;
 									this.props.attributes.image_size = 'medium';
 									this.props.setAttributes(
 										{
-											width: 600,
+											width: 640,
 											height: 450,
 											image_size: 'medium',
 										}
@@ -178,8 +178,8 @@ class Browser_Shots extends Component {
 								isDefault
 								isPrimary={'large' == image_size ? true : false}
 								onClick={ ( e ) => {
-									this.props.attributes.width = 800;
-									this.props.attributes.height = 650;
+									this.props.attributes.width = 960;
+									this.props.attributes.height = 720;
 									this.props.attributes.image_size = 'large';
 									this.props.setAttributes(
 										{
