@@ -276,13 +276,6 @@ class Browser_Shots extends Component {
 							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
 					/>
 
-					<TextControl
-						label={ __( 'CSS Class Name', 'browser-shots' ) }
-						type="text"
-						value={ classname }
-						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
-					/>
-
 					<SelectControl
 							label={ __( 'Rel', 'browser-shots' ) }
 							options={ relOptions }
