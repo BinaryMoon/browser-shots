@@ -21,8 +21,29 @@ class Browser_Shots_Gutenberg {
 	 */
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'browser_shots_block_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'add_frontend_styles' ) );
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_register' ) );
+	}
+
+	/**
+	 * Enqueue Gutenberg block assets for backend editor.
+	 *
+	 * @uses {wp-blocks} for block type registration & related functions.
+	 * @uses {wp-element} for WP Element abstraction — structure of blocks.
+	 * @uses {wp-i18n} to internationalize the block's text.
+	 * @uses {wp-editor} for WP editor styles.
+	 * @since 2.7.0
+	 */
+	public function add_frontend_styles() {
+		// Styles
+		wp_enqueue_style(
+			'browser-shots-frontend-css', // Handle.
+			plugins_url( '/dist/blocks.style.build.css', dirname( __FILE__ ) ),
+			array(),
+			BROWSER_SHOTS_VERSION,
+			'all' // Enqueue the script in the footer.
+		);
 	}
 
 	/**
@@ -41,7 +62,7 @@ class Browser_Shots_Gutenberg {
 			plugins_url( '/dist/blocks.editor.build.css', dirname( __FILE__ ) ),
 			array(),
 			BROWSER_SHOTS_VERSION,
-			false // Enqueue the script in the footer.
+			'all' // Enqueue the script in the footer.
 		);
 
 		// Scripts.
@@ -57,6 +78,7 @@ class Browser_Shots_Gutenberg {
 			'browsershots',
 			array(
 				'rest_url' => get_rest_url(),
+				'nonce'    => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 
@@ -64,7 +86,7 @@ class Browser_Shots_Gutenberg {
 			wp_set_script_translations( 'browser-shots-block-js', 'browser-shots' );
 		} elseif ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
 			$locale  = gutenberg_get_jed_locale_data( 'browser-shots' );
-			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browsershots" );';
+			$content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "browser-shots" );';
 			wp_script_add_data( 'browser-shots-block-js', 'data', $content );
 		} elseif ( function_exists( 'wp_get_jed_locale_data' ) ) {
 			/* for 5.0 */
@@ -121,11 +143,15 @@ class Browser_Shots_Gutenberg {
 					),
 					'image_class' => array(
 						'type'    => 'string',
-						'default' => 'alignnone',
+						'default' => 'center',
 					),
 					'rel'         => array(
 						'type'    => 'string',
 						'default' => '',
+					),
+					'image_size'  => array(
+						'type'    => 'string',
+						'default' => 'medium',
 					),
 				),
 				'render_callback' => array( $this, 'block_frontend' ),
@@ -156,19 +182,29 @@ class Browser_Shots_Gutenberg {
 	 * @see rest_api_register
 	 */
 	public function get_shortcode_contents() {
-		$args         = array(
-			'url'         => $_GET['url'],
-			'width'       => $_GET['width'],
-			'height'      => $_GET['height'],
-			'alt'         => $_GET['alt'],
-			'link'        => $_GET['link'],
-			'target'      => $_GET['target'],
-			'class'       => $_GET['class'],
-			'image_class' => $_GET['image_class'],
-			'rel'         => $_GET['rel'],
-		);
-		$browsershots = new BrowserShots();
-		die( $browsershots->shortcode( $args ) );
+
+		if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
+
+			$args = array(
+				'url'         => esc_url_raw( $_GET['url'] ),
+				'width'       => absint( $_GET['width'] ),
+				'height'      => absint( $_GET['height'] ),
+				'alt'         => sanitize_text_field( $_GET['alt'] ),
+				'link'        => ! empty( $_GET['link'] ) ? esc_url_raw( $_GET['link'] ) : '',
+				'target'      => sanitize_text_field( $_GET['target'] ),
+				'class'       => sanitize_text_field( $_GET['class'] ),
+				'image_class' => sanitize_text_field( $_GET['image_class'] ),
+				'rel'         => sanitize_text_field( $_GET['rel'] ),
+				'nolink'      => true,
+			);
+
+			$browsershots = new BrowserShots();
+			die( wp_kses_post( $browsershots->shortcode( $args ) ) );
+
+		}
+
+		die( esc_html__( 'Browser Shots could not retrieve the image', 'browser-shots' ) );
+
 	}
 
 	/**
@@ -180,22 +216,28 @@ class Browser_Shots_Gutenberg {
 	 * @param array $attributes Array of passed shortcode attributes.
 	 */
 	public function block_frontend( $attributes ) {
+
 		if ( is_admin() ) {
 			return;
 		}
-		$args         = array(
-			'url'         => $attributes['url'],
-			'width'       => $attributes['width'],
-			'height'      => $attributes['height'],
-			'alt'         => $attributes['alt'],
-			'link'        => $attributes['link'],
-			'target'      => $attributes['target'],
-			'class'       => $attributes['classname'],
-			'image_class' => $attributes['image_class'],
-			'rel'         => $attributes['rel'],
+
+		$args = array(
+			'url'         => esc_url_raw( $attributes['url'] ),
+			'width'       => absint( $attributes['width'] ),
+			'height'      => absint( $attributes['height'] ),
+			'alt'         => sanitize_text_field( $attributes['alt'] ),
+			'link'        => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
+			'target'      => sanitize_text_field( $attributes['target'] ),
+			'class'       => sanitize_text_field( $attributes['classname'] ),
+			'image_class' => sanitize_text_field( 'align' . $attributes['image_class'] ),
+			'rel'         => sanitize_text_field( $attributes['rel'] ),
 		);
+
 		$browsershots = new BrowserShots();
-		return $browsershots->shortcode( $args );
+		return wp_kses_post( $browsershots->shortcode( $args ) );
+
 	}
+
 }
+
 new Browser_Shots_Gutenberg();
