@@ -48,6 +48,9 @@ registerBlockType( 'browser-shots/browser-shots', {
 		__( 'screenshot', 'browser-shots' )
 	],
 	edit: edit,
+	supports: {
+		align: true,
+	},
 
 	// Render via PHP
 	save() {
