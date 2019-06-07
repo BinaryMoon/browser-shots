@@ -6,17 +6,17 @@ var HtmlToReactParser = require('html-to-react').Parser;
 import classnames from 'classnames';
 const { Component, Fragment } = wp.element;
 
-const { __ } = wp.i18n;
+const { __, _x } = wp.i18n;
 
 const {
 	PanelBody,
 	Placeholder,
 	SelectControl,
-	Spinner,
 	TextControl,
-	RangeControl,
 	Toolbar,
 	Button,
+	ButtonGroup,
+	PanelRow,
 } = wp.components;
 
 const {
@@ -42,6 +42,7 @@ class Browser_Shots extends Component {
 			classname: this.props.attributes.classname,
 			image_class: this.props.attributes.image_class,
 			rel: this.props.attributes.rel,
+			image_size: this.props.attributes.image_size,
 		};
 	}
 
@@ -72,7 +73,7 @@ class Browser_Shots extends Component {
 
 	render() {
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, classname, image_class, rel} = attributes;
+		const { width, height, alt, link, target, classname, image_class, rel, image_size} = attributes;
 		let htmlToReactParser = new HtmlToReactParser();
 
 		const targetOptions = [
@@ -104,20 +105,133 @@ class Browser_Shots extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Browser Shots', 'browser-shots' ) }>
-					<RangeControl
-						label={__('Width', 'browser-shots')}
-						value={ width }
-						onChange={ ( value ) => { this.props.setAttributes( { width: value } ); } }
-						min={ 100 }
-						max={ 1000 }
-					/>
-					<RangeControl
-						label={__('Height', 'browser-shots')}
-						value={ height }
-						onChange={ ( value ) => { this.props.setAttributes( { height: value } ); } }
-						min={ 100 }
-						max={ 1000 }
-					/>
+					<p>{__( 'Image Dimensions', 'browser-shots' )}</p>
+					<PanelRow className="browser-shots-dimensions">
+						<TextControl
+							type="number"
+							label={ __( 'Width',  'browser-shots' ) }
+							value={ width }
+							min={100}
+							max={1280}
+							onChange={ ( value ) => {
+								if ( value > 1280 ) {
+									value = 1280;
+								}
+								this.props.setAttributes( { width: value, image_size: 'custom' } )
+							} }
+						/>
+						<TextControl
+							type="number"
+							label={ __( 'Height',  'browser-shots' ) }
+							value={ height }
+							min={100}
+							max={960}
+							onChange={ ( value ) => {
+								if ( value > 960 ) {
+									value = 960;
+								}
+								this.props.setAttributes( { height: value, image_size: 'custom' } )
+							} }
+						/>
+					</PanelRow>
+					<PanelRow className="browser-shots-dimensions-options">
+						<ButtonGroup>
+							<Button
+								isDefault
+								isPrimary={'small' == image_size ? true : false}
+								onClick={ ( e ) => {
+									this.props.attributes.width = 200;
+									this.props.attributes.height = 250;
+									this.props.attributes.image_size = 'small';
+									this.props.setAttributes(
+										{
+											width: 200,
+											height: 250,
+											image_size: 'small',
+										}
+									);
+									this.pluginOnClick( e );
+								} }
+							>
+								{_x( 'S', 'browser-shots', 'Small Image Size' )}
+							</Button>
+							<Button
+								isDefault
+								isPrimary={'medium' == image_size ? true : false}
+								onClick={ ( e ) => {
+									this.props.attributes.width = 600;
+									this.props.attributes.height = 450;
+									this.props.attributes.image_size = 'medium';
+									this.props.setAttributes(
+										{
+											width: 600,
+											height: 450,
+											image_size: 'medium',
+										}
+									);
+									this.pluginOnClick( e );
+								} }
+							>
+								{_x( 'M', 'browser-shots', 'Medium Image Size' )}
+							</Button>
+							<Button
+								isDefault
+								isPrimary={'large' == image_size ? true : false}
+								onClick={ ( e ) => {
+									this.props.attributes.width = 800;
+									this.props.attributes.height = 650;
+									this.props.attributes.image_size = 'large';
+									this.props.setAttributes(
+										{
+											width: 800,
+											height: 650,
+											image_size: 'large',
+										}
+									);
+									this.pluginOnClick( e );
+								} }
+							>
+								{_x( 'L', 'browser-shots', 'Large Image Size' )}
+							</Button>
+							<Button
+							isDefault
+							isPrimary={'full' == image_size ? true : false}
+							onClick={ ( e ) => {
+								this.props.attributes.width = 1280;
+								this.props.attributes.height = 960;
+								this.props.attributes.image_size = 'full';
+								this.props.setAttributes(
+									{
+										width: 1280,
+										height: 960,
+										image_size: 'full',
+									}
+								);
+								this.pluginOnClick( e );
+							} }
+							>
+								{_x( 'XL', 'browser-shots', 'Extra Large Image Size' )}
+							</Button>
+						</ButtonGroup>
+						<Button
+							isDefault
+							onClick={ ( e ) => {
+								this.props.attributes.width = 600;
+								this.props.attributes.height = 450;
+								this.props.attributes.image_size = 'medium';
+								this.props.setAttributes(
+									{
+										width: 600,
+										height: 450,
+										image_size: 'medium',
+									}
+								);
+								this.pluginOnClick( e );
+							} }
+						>
+							{_x( 'Reset', 'browser-shots', 'Reset Image Size to Default' )}
+						</Button>
+					</PanelRow>
 					<TextControl
 						label={ __( 'Alt Text',  'browser-shots' ) }
 						type="text"
@@ -221,6 +335,13 @@ class Browser_Shots extends Component {
 										'align' + image_class,
 									)
 								}
+								style={ {
+									width: width + 'px',
+									height: height + 'px',
+									overflow: 'hidden',
+									maxWidth: '100%',
+									maxHeight: '450px'
+								} }
 							>
 								{htmlToReactParser.parse(this.state.html)}
 							</div>

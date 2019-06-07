@@ -149,6 +149,10 @@ class Browser_Shots_Gutenberg {
 						'type'    => 'string',
 						'default' => '',
 					),
+					'image_size'  => array(
+						'type'    => 'string',
+						'default' => 'medium',
+					),
 				),
 				'render_callback' => array( $this, 'block_frontend' ),
 			)

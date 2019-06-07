@@ -53,3 +53,17 @@
     height: auto;
   }
 }
+.browser-shots-dimensions {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  .components-base-control {
+    width: 48%;
+    margin-bottom: 0 !important;
+  }
+  .components-base-control__field {
+    margin-bottom: 0 !important;
+  }
+}
+.browser-shots-dimensions-options {
+  margin-bottom: 20px;
+}
