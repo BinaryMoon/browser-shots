@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-06-06T03:47:20+00:00\n"
-"PO-Revision-Date: 2019-06-06T03:47:20+00:00\n"
+"POT-Creation-Date: 2019-06-07T04:46:01+00:00\n"
+"PO-Revision-Date: 2019-06-07T04:46:01+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: browser-shots\n"
 
@@ -63,6 +63,22 @@ msgstr ""
 msgid "Open Link in new Window?"
 msgstr ""
 
+#: src/class-browser-shots-gutenberg.php:201
+msgid "Browser Shots could not retrieve the image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Automatically embed screenshots of websites onto your site."
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "website"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "screenshot"
+msgstr ""
+
 #: dist/blocks.build.js:1
 msgid "None"
 msgstr ""
@@ -84,23 +100,19 @@ msgid "Top"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Left"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Center"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Right"
-msgstr ""
-
-#: dist/blocks.build.js:1
 msgid "No Follow"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Reset"
+msgid "Edit URL"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Refresh Image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Image Dimensions"
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -128,15 +140,7 @@ msgid "CSS Class Name"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Image Alignment"
-msgstr ""
-
-#: dist/blocks.build.js:1
 msgid "Rel"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Refresh Image"
 msgstr ""
 
 #: dist/blocks.build.js:1

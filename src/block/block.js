@@ -31,7 +31,7 @@ registerBlockType( 'browser-shots/browser-shots', {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Browser Shots', 'browser-shots' ),
-	description: __( 'Automattically embed screenshots of websites onto your site.', 'browser-shots' ),
+	description: __( 'Automatically embed screenshots of websites onto your site.', 'browser-shots' ),
 	icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill-rule="evenodd">
 	<path d="M18,5 L4,5 L4,19 L2,19 L2,5 C2,3.8954305 2.8954305,3 4,3 L18,3 L18,5 Z"/>
