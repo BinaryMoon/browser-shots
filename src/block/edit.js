@@ -106,7 +106,8 @@ class Browser_Shots extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Browser Shots', 'browser-shots' ) }>
+				<PanelBody title={ __( 'Browser Shots Settings', 'browser-shots' ) }>
+
 					<TextareaControl
 						label={ __( 'Alt Text (Alternative Text)' ) }
 						value={ alt }
@@ -150,6 +151,7 @@ class Browser_Shots extends Component {
 							} }
 						/>
 					</PanelRow>
+
 					<PanelRow className="browser-shots-dimensions-options">
 						<ButtonGroup>
 							<Button
@@ -248,36 +250,45 @@ class Browser_Shots extends Component {
 							{_x( 'Reset', 'Reset Image Size to Default', 'browser-shots' )}
 						</Button>
 					</PanelRow>
-					<TextControl
-						label={ __( 'Link Image to URL', 'browser-shots' ) }
-						type="text"
-						value={ link }
-						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
-					/>
-					<SelectControl
-							label={ __( 'Target', 'browser-shots' ) }
-							options={ targetOptions }
-							value={ target }
-							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
-					/>
-					<TextControl
-						label={ __( 'CSS Class Name', 'browser-shots' ) }
-						type="text"
-						value={ classname }
-						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
-					/>
-					<SelectControl
-							label={ __( 'Rel', 'browser-shots' ) }
-							options={ relOptions }
-							value={ rel }
-							onChange={ ( value ) => { this.props.setAttributes( { rel: value } ); } }
-					/>
+
 					<Button
 						onClick={ ( e ) => { this.pluginOnClick(e)  } }
 						isDefault
 					>
 						{ __( 'Refresh Image', 'browser-shots' ) }
 					</Button>
+
+				</PanelBody>
+
+				<PanelBody title={ __( 'Link Settings', 'browser-shots' ) }>
+
+					<TextControl
+						label={ __( 'Link Image to URL', 'browser-shots' ) }
+						type="text"
+						value={ link }
+						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
+					/>
+
+					<SelectControl
+							label={ __( 'Target', 'browser-shots' ) }
+							options={ targetOptions }
+							value={ target }
+							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
+					/>
+
+					<TextControl
+						label={ __( 'CSS Class Name', 'browser-shots' ) }
+						type="text"
+						value={ classname }
+						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
+					/>
+
+					<SelectControl
+							label={ __( 'Rel', 'browser-shots' ) }
+							options={ relOptions }
+							value={ rel }
+							onChange={ ( value ) => { this.props.setAttributes( { rel: value } ); } }
+					/>
 
 				</PanelBody>
 			</InspectorControls>
