@@ -182,8 +182,10 @@ class Browser_Shots_Gutenberg {
 	 * @see rest_api_register
 	 */
 	public function get_shortcode_contents() {
+
 		if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
-			$args         = array(
+
+			$args = array(
 				'url'         => esc_url_raw( $_GET['url'] ),
 				'width'       => absint( $_GET['width'] ),
 				'height'      => absint( $_GET['height'] ),
@@ -195,10 +197,14 @@ class Browser_Shots_Gutenberg {
 				'rel'         => sanitize_text_field( $_GET['rel'] ),
 				'nolink'      => true,
 			);
+
 			$browsershots = new BrowserShots();
 			die( wp_kses_post( $browsershots->shortcode( $args ) ) );
+
 		}
+
 		die( esc_html__( 'Browser Shots could not retrieve the image', 'browser-shots' ) );
+
 	}
 
 	/**
@@ -210,10 +216,12 @@ class Browser_Shots_Gutenberg {
 	 * @param array $attributes Array of passed shortcode attributes.
 	 */
 	public function block_frontend( $attributes ) {
+
 		if ( is_admin() ) {
 			return;
 		}
-		$args         = array(
+
+		$args = array(
 			'url'         => esc_url_raw( $attributes['url'] ),
 			'width'       => absint( $attributes['width'] ),
 			'height'      => absint( $attributes['height'] ),
@@ -224,8 +232,12 @@ class Browser_Shots_Gutenberg {
 			'image_class' => sanitize_text_field( 'align' . $attributes['image_class'] ),
 			'rel'         => sanitize_text_field( $attributes['rel'] ),
 		);
+
 		$browsershots = new BrowserShots();
 		return wp_kses_post( $browsershots->shortcode( $args ) );
+
 	}
+
 }
+
 new Browser_Shots_Gutenberg();
