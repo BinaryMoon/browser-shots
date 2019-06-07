@@ -189,7 +189,6 @@ class Browser_Shots extends Component {
 												image_size: 'small',
 											}
 										);
-										this.pluginOnClick( e );
 									}
 								}
 							>
@@ -207,7 +206,6 @@ class Browser_Shots extends Component {
 												image_size: 'medium',
 											}
 										);
-										this.pluginOnClick( e );
 									}
 								}
 							>
@@ -225,7 +223,6 @@ class Browser_Shots extends Component {
 												image_size: 'large',
 											}
 										);
-										this.pluginOnClick( e );
 									}
 								}
 							>
@@ -243,7 +240,6 @@ class Browser_Shots extends Component {
 												image_size: 'full',
 											}
 										);
-										this.pluginOnClick( e );
 									}
 								}
 							>
