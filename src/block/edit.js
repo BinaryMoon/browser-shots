@@ -109,7 +109,7 @@ class Browser_Shots extends Component {
 					<PanelRow className="browser-shots-dimensions">
 						<TextControl
 							type="number"
-							label={ __( 'Width',  'browser-shots' ) }
+							label={ __( 'Width', 'browser-shots' ) }
 							value={ width }
 							min={100}
 							max={1280}
@@ -122,7 +122,7 @@ class Browser_Shots extends Component {
 						/>
 						<TextControl
 							type="number"
-							label={ __( 'Height',  'browser-shots' ) }
+							label={ __( 'Height', 'browser-shots' ) }
 							value={ height }
 							min={100}
 							max={960}
@@ -153,7 +153,7 @@ class Browser_Shots extends Component {
 									this.pluginOnClick( e );
 								} }
 							>
-								{_x( 'S', 'browser-shots', 'Small Image Size' )}
+								{_x( 'S', 'Small Image Size', 'browser-shots' )}
 							</Button>
 							<Button
 								isDefault
@@ -172,7 +172,7 @@ class Browser_Shots extends Component {
 									this.pluginOnClick( e );
 								} }
 							>
-								{_x( 'M', 'browser-shots', 'Medium Image Size' )}
+								{_x( 'M', 'Medium Image Size', 'browser-shots' )}
 							</Button>
 							<Button
 								isDefault
@@ -191,7 +191,7 @@ class Browser_Shots extends Component {
 									this.pluginOnClick( e );
 								} }
 							>
-								{_x( 'L', 'browser-shots', 'Large Image Size' )}
+								{_x( 'L', 'Large Image Size', 'browser-shots' )}
 							</Button>
 							<Button
 							isDefault
@@ -210,7 +210,7 @@ class Browser_Shots extends Component {
 								this.pluginOnClick( e );
 							} }
 							>
-								{_x( 'XL', 'browser-shots', 'Extra Large Image Size' )}
+								{_x( 'XL', 'Extra Large Image Size', 'browser-shots' )}
 							</Button>
 						</ButtonGroup>
 						<Button
@@ -229,17 +229,17 @@ class Browser_Shots extends Component {
 								this.pluginOnClick( e );
 							} }
 						>
-							{_x( 'Reset', 'browser-shots', 'Reset Image Size to Default' )}
+							{_x( 'Reset', 'Reset Image Size to Default', 'browser-shots' )}
 						</Button>
 					</PanelRow>
 					<TextControl
-						label={ __( 'Alt Text',  'browser-shots' ) }
+						label={ __( 'Alt Text', 'browser-shots' ) }
 						type="text"
 						value={ alt }
 						onChange={ ( value ) => { this.props.setAttributes( { alt: value });  } }
 					/>
 					<TextControl
-						label={ __( 'Link Image to URL',  'browser-shots' ) }
+						label={ __( 'Link Image to URL', 'browser-shots' ) }
 						type="text"
 						value={ link }
 						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
@@ -251,7 +251,7 @@ class Browser_Shots extends Component {
 							onChange={ ( value ) => { this.props.setAttributes( { target: value } ); } }
 					/>
 					<TextControl
-						label={ __( 'CSS Class Name',  'browser-shots' ) }
+						label={ __( 'CSS Class Name', 'browser-shots' ) }
 						type="text"
 						value={ classname }
 						onChange={ ( value ) => { this.props.setAttributes( { classname: value });  } }
@@ -266,7 +266,7 @@ class Browser_Shots extends Component {
 						onClick={ ( e ) => { this.pluginOnClick(e)  } }
 						isDefault
 					>
-						{ __( 'Refresh Image',  'browser-shots' ) }
+						{ __( 'Refresh Image', 'browser-shots' ) }
 					</Button>
 
 				</PanelBody>
