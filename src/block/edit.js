@@ -92,7 +92,7 @@ class Browser_Shots extends Component {
 			}
 		);
 	}
-	}
+
 
 	render() {
 
