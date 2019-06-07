@@ -101,8 +101,15 @@ class Browser_Shots extends Component {
 		let htmlToReactParser = new HtmlToReactParser();
 
 		const relOptions = [
-			{ value: '', label: __('None', 'browser-shots' ) },
-			{ value: 'nofollow', label: __('No Follow', 'browser-shots' ) }
+			{
+				value: '',
+				label: __( 'None', 'browser-shots'
+				)
+			},
+			{
+				value: 'nofollow',
+				label: __( 'No Follow', 'browser-shots' )
+			}
 		];
 
 		const resetSelect = [
