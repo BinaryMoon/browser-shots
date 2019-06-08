@@ -91,8 +91,7 @@ class Browser_Shots extends Component {
 	render() {
 
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, classname, image_class, rel, image_size } = attributes;
-		let htmlToReactParser = new HtmlToReactParser();
+		const { width, height, alt, link, target, rel, image_size } = attributes;
 
 		const relOptions = [
 			{
