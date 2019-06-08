@@ -42,47 +42,48 @@ class Browser_Shots extends Component {
 			link: this.props.attributes.link,
 			target: this.props.attributes.target,
 			classname: this.props.attributes.classname,
-			image_class: this.props.attributes.image_class,
 			rel: this.props.attributes.rel,
+			image_class: this.props.attributes.image_class,
 			image_size: this.props.attributes.image_size,
 		};
-	}
-
-
-	pluginOnClick = ( event = null ) => {
-
-		if( '' !== this.state.url ) {
-
-			this.setState(
-				{
-					imageLoading: true,
-					loading: false,
-				}
-			);
-
 
 	};
 
-				// Now Set State
-				this.setState(
-					{
-						loading: false,
-						imageLoading: false,
-						html: response.data
-					}
-				);
 
+	pluginOnClick = () => {
 
-			} );
+		if ( '' === this.state.url ) {
+			return;
 		}
-	}
 
-
-	urlChange = ( event ) => {
+		// Now Set State
 		this.setState(
 			{
-				url: event.target.value
+				welcome: '' === this.props.attributes.url ? true : false,
 			}
+		);
+
+	};
+
+	urlChange = ( event ) => {
+
+		this.props.setAttributes( { url: event.target.value } );
+
+		this.setState( { url: event.target.value } );
+
+	};
+
+
+	createPreviewImage = () => {
+
+		const { width, height, url } = this.props.attributes;
+
+		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}`;
+
+		return (
+			<div>
+				<img src={mshotsUrl} alt={this.props.attributes.alt} width={width} height={height} />
+			</div>
 		);
 	}
 
@@ -358,6 +359,7 @@ class Browser_Shots extends Component {
 								}
 							}
 						>
+							{this.createPreviewImage()}
 						</div>
 					</Fragment>
 				}
