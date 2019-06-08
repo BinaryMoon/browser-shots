@@ -253,7 +253,6 @@ class Browser_Shots extends Component {
 											image_size: 'medium',
 										}
 									);
-									this.pluginOnClick( e );
 								}
 							}
 						>
