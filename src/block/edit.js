@@ -332,7 +332,19 @@ class Browser_Shots extends Component {
 								/>
 							</div>
 							<div>
-								<input className="button button-primary" style={{marginTop: '25px'}} type="submit" id="browsershots-input-submit" value={__( 'Find Image', 'browser-shots' )} onClick={ ( event ) => { this.pluginOnClick(event); } }  />
+								<input
+									className="button button-primary"
+									style={{ marginTop: '25px' }}
+									type="submit" id="browsershots-input-submit"
+									value={__( 'Find Image', 'browser-shots' )}
+									onClick={
+										() => {
+											if ( '' !== this.props.attributes.url ) {
+												this.setState( { welcome: false } );
+											}
+										}
+									}
+								/>
 							</div>
 						</div>
 					</PanelBody>
@@ -346,12 +358,7 @@ class Browser_Shots extends Component {
 							<Toolbar controls={resetSelect} />
 						</BlockControls>
 						<div
-							className={
-								classnames(
-									'browser-shots-gutenberg-wrapper',
-									'align' + image_class,
-								)
-							}
+							className={'browser-shots-gutenberg-wrapper'}
 							style={
 								{
 									overflow: 'hidden',
