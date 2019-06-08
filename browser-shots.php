@@ -47,15 +47,19 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			add_shortcode( 'browser-shot', array( $this, 'shortcode' ) );
 			add_action( 'init', array( $this, 'tinymce_button' ) );
 			add_action( 'plugins_loaded', array( $this, 'load_plugin_text_domain' ) );
+
 		}
+
 
 		/**
 		 * Load plugin text domain
 		 *
 		 */
 		public function load_plugin_text_domain() {
+
 			// i18n init.
 			load_plugin_textdomain( 'browser-shots', '', basename( dirname( __FILE__ ) ) . '/languages' );
+
 		}
 
 
@@ -84,34 +88,25 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 						'class'       => '',
 						'image_class' => 'alignnone',
 						'rel'         => '',
-						'nolink'      => false,
 					),
 					$attributes
 				)
 			);
 
 			if ( empty( $alt ) ) {
-
 				$alt = esc_url( $url );
-
 			}
 
 			if ( empty( $link ) ) {
-
 				$link = esc_url( $url );
-
 			}
 
 			if ( $rel ) {
-
 				$rel = ' rel="' . esc_attr( $rel ) . '"';
-
 			}
 
 			if ( $target ) {
-
 				$target = ' target="' . esc_attr( $target ) . '"';
-
 			}
 
 			// Get screenshot.
@@ -122,11 +117,13 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 				ob_start();
 
 				if ( ! empty( $content ) ) {
-					echo '<div class="wp-caption" style="width:' . ( intval( $width ) + 10 ) . 'px;">';
+					echo '<div class="wp-caption ' . $image_class . '" style="width:' . ( intval( $width ) + 10 ) . 'px;">';
+					// Reset image_class so it's not used again.
+					$image_class = '';
 				}
 
 ?>
-<div class="browser-shot <?php echo esc_attr( $class ); ?>"><?php if ( false === $nolink ) : ?><a href="<?php echo esc_url( $link ); ?>" <?php echo $target . $rel; ?>><?php endif; ?><img src="<?php echo esc_url( $image_uri ); ?>" alt="<?php echo esc_attr( $alt ); ?>" width="<?php echo intval( $width ); ?>" height="<?php echo intval( $height ); ?>" class="<?php echo esc_attr( $image_class ); ?>" /><?php if ( false === $nolink ) : ?></a><?php endif; ?></div>
+<div class="browser-shot <?php echo $image_class; ?>"><a href="<?php echo esc_url( $link ); ?>" <?php echo $target . $rel; ?>><img src="<?php echo esc_url( $image_uri ); ?>" alt="<?php echo esc_attr( $alt ); ?>" width="<?php echo intval( $width ); ?>" height="<?php echo intval( $height ); ?>" /></a></div>
 <?php
 
 				if ( ! empty( $content ) ) {
