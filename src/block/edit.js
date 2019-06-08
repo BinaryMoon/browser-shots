@@ -103,8 +103,7 @@ class Browser_Shots extends Component {
 		const relOptions = [
 			{
 				value: '',
-				label: __( 'None', 'browser-shots'
-				)
+				label: __( 'None', 'browser-shots' )
 			},
 			{
 				value: 'nofollow',
@@ -129,49 +128,53 @@ class Browser_Shots extends Component {
 
 			<InspectorControls>
 
-				<PanelBody title={ __( 'Browser Shots Settings', 'browser-shots' ) }>
+				<PanelBody title={__( 'Browser Shots Settings', 'browser-shots' )}>
 
 					<TextareaControl
-						label={ __( 'Alt Text (Alternative Text)' ) }
-						value={ alt }
-						onChange={ ( value ) => { this.props.setAttributes( { alt: value } );  } }
+						label={__( 'Alt Text (Alternative Text)' )}
+						value={alt}
+						onChange={( value ) => { this.props.setAttributes( { alt: value } ); }}
 						help={
 							<div>
 								<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-									{ __( 'Describe the purpose of the image', 'browser-shots' ) }
+									{__( 'Describe the purpose of the image', 'browser-shots' )}
 								</ExternalLink>
-								{ __( 'Leave empty if the image is purely decorative.', 'browser-shots' ) }
+								{__( 'Leave empty if the image is purely decorative.', 'browser-shots' )}
 							</div>
 						}
 					/>
 
-					<p>{ __( 'Image Dimensions', 'browser-shots' ) }</p>
+					<p>{__( 'Image Dimensions', 'browser-shots' )}</p>
 					<PanelRow className="browser-shots-dimensions">
 						<TextControl
 							type="number"
-							label={ __( 'Width', 'browser-shots' ) }
-							value={ width }
+							label={__( 'Width', 'browser-shots' )}
+							value={width}
 							min={100}
 							max={1280}
-							onChange={ ( value ) => {
-								if ( value > 1280 ) {
-									value = 1280;
+							onChange={
+								( value ) => {
+									if ( value > 1280 ) {
+										value = 1280;
+									}
+									this.props.setAttributes( { width: value, image_size: 'custom' } )
 								}
-								this.props.setAttributes( { width: value, image_size: 'custom' } )
-							} }
+							}
 						/>
 						<TextControl
 							type="number"
-							label={ __( 'Height', 'browser-shots' ) }
-							value={ height }
+							label={__( 'Height', 'browser-shots' )}
+							value={height}
 							min={100}
 							max={960}
-							onChange={ ( value ) => {
-								if ( value > 960 ) {
-									value = 960;
+							onChange={
+								( value ) => {
+									if ( value > 960 ) {
+										value = 960;
+									}
+									this.props.setAttributes( { height: value, image_size: 'custom' } )
 								}
-								this.props.setAttributes( { height: value, image_size: 'custom' } )
-							} }
+							}
 						/>
 					</PanelRow>
 
@@ -266,44 +269,46 @@ class Browser_Shots extends Component {
 					</PanelRow>
 
 					<Button
-						onClick={ ( e ) => { this.pluginOnClick( e )  } }
+						onClick={( e ) => { this.pluginOnClick( e ) }}
 						isDefault
 					>
-						{ __( 'Refresh Image', 'browser-shots' ) }
+						{__( 'Refresh Image', 'browser-shots' )}
 					</Button>
 
 				</PanelBody>
 
-				<PanelBody title={ __( 'Link Settings', 'browser-shots' ) } initialOpen={ false }>
+				<PanelBody title={__( 'Link Settings', 'browser-shots' )} initialOpen={false}>
 
 					<TextControl
-						label={ __( 'Link Image to URL', 'browser-shots' ) }
+						label={__( 'Link Image to URL', 'browser-shots' )}
 						type="text"
-						value={ link }
-						onChange={ ( value ) => { this.props.setAttributes( { link: value });  } }
+						value={link}
+						onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
 					/>
 
 					<ToggleControl
-						label={ __( 'Open in New Tab', 'browser-shots' ) }
-						onChange={ ( value ) => {
-							let linkTarget = value ? '_blank' : 'none';
-							this.props.setAttributes( { target: linkTarget } );
-						} }
-						checked={ target === '_blank' }
+						label={__( 'Open in New Tab', 'browser-shots' )}
+						onChange={
+							( value ) => {
+								let linkTarget = value ? '_blank' : 'none';
+								this.props.setAttributes( { target: linkTarget } );
+							}
+						}
+						checked={target === '_blank'}
 					/>
 
 					<SelectControl
-						label={ __( 'Rel', 'browser-shots' ) }
-						options={ relOptions }
-						value={ rel }
-						onChange={ ( value ) => { this.props.setAttributes( { rel: value } ); } }
+						label={__( 'Rel', 'browser-shots' )}
+						options={relOptions}
+						value={rel}
+						onChange={( value ) => { this.props.setAttributes( { rel: value } ); }}
 					/>
 
 				</PanelBody>
 			</InspectorControls>
 		);
 
-		return(
+		return (
 
 			<Fragment>
 				{this.state.loading &&
@@ -322,7 +327,15 @@ class Browser_Shots extends Component {
 								<label htmlFor="browser-shots-url">{__( 'Enter a URL', 'browser-shots' )}</label>
 							</div>
 							<div>
-								<input type="text" id="browser-shots-url" value={this.state.url} onChange={ ( event ) => { this.props.setAttributes( { url: event.target.value } ); this.urlChange(event); } } />
+								<input type="text"
+									id="browser-shots-url"
+									value={this.state.url}
+									onChange={
+										( event ) => {
+											this.urlChange( event );
+										}
+									}
+								/>
 							</div>
 							<div>
 								<input className="button button-primary" style={{marginTop: '25px'}} type="submit" id="browsershots-input-submit" value={__( 'Find Image', 'browser-shots' )} onClick={ ( event ) => { this.pluginOnClick(event); } }  />
