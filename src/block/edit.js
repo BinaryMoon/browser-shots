@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import axios from 'axios';
-var HtmlToReactParser = require('html-to-react').Parser;
+
 import classnames from 'classnames';
 const { Component, Fragment } = wp.element;
 
@@ -62,10 +61,8 @@ class Browser_Shots extends Component {
 				}
 			);
 
-			var rest_url = browsershots.rest_url + 'browsershots/v1/get_html/';
 
-			axios.get( rest_url + `?url=${ this.props.attributes.url }&width=${ this.props.attributes.width}&height=${this.props.attributes.height}&alt=${this.props.attributes.alt}&link=${this.props.attributes.link}&target=${this.props.attributes.target}&class=${this.props.attributes.classname}&rel=${this.props.attributes.rel}`, {
-				'headers': { 'X-WP-Nonce': browsershots.nonce } } ).then( ( response ) => {
+	};
 
 				// Now Set State
 				this.setState(
@@ -76,7 +73,6 @@ class Browser_Shots extends Component {
 					}
 				);
 
-				this.props.setAttributes( { html: response.data } );
 
 			} );
 		}
@@ -363,7 +359,7 @@ class Browser_Shots extends Component {
 					<Fragment>
 						{inspectorControls}
 						<BlockControls>
-							<Toolbar controls={ resetSelect } />
+							<Toolbar controls={resetSelect} />
 						</BlockControls>
 						<div
 							className={
@@ -379,7 +375,6 @@ class Browser_Shots extends Component {
 								}
 							}
 						>
-							{ htmlToReactParser.parse( this.state.html ) }
 						</div>
 					</Fragment>
 				}
