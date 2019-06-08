@@ -50,7 +50,7 @@ registerBlockType(
 		],
 		edit: edit,
 		supports: {
-			align: true,
+			align: [ 'left', 'center', 'right' ],
 		},
 
 		// Rendered via PHP.
