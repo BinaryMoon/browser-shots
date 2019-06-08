@@ -85,6 +85,7 @@ class Browser_Shots extends Component {
 				<img src={mshotsUrl} alt={this.props.attributes.alt} width={width} height={height} />
 			</div>
 		);
+
 	}
 
 
