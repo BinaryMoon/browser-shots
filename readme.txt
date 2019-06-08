@@ -56,6 +56,7 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 = 1.7 - 8th June 2019 =
 * Add Gutenberg block for including Browser Shots.
+* Fix image alignment so that it works properly :).
 
 = 1.6 - 30th May 2019 =
 * Add rel property to shortcode so that links can include rel="nofollow" or similar.
