@@ -10,7 +10,6 @@ const { __, _x } = wp.i18n;
 
 const {
 	PanelBody,
-	Placeholder,
 	SelectControl,
 	TextControl,
 	TextareaControl,
@@ -25,7 +24,6 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
-	BlockAlignmentToolbar,
 } = wp.editor;
 
 
