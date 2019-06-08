@@ -1,8 +1,13 @@
 .browser-shot {
-  display: inline;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+
+	a {
+		display: block;
+	}
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
 }
