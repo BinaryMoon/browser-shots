@@ -1,5 +1,20 @@
 # Browser Shots
 
+<a href="https://wordpress.org/plugins/browser-shots/">Browser Shots is a WordPress plugin</a> to automate the process of taking website screenshots.
+
+## Shortcode Arguments
+
+```
+// basic shot 600px wide
+[browser-shot url="http://link-to-website" width="600"]
+
+// shot with link to other website
+[browser-shot url="http://link-to-website" width="700" link="http://www.binarymoon.co.uk/"]
+
+// shot with caption (uses default WordPress caption styles)
+[browser-shot url="http://link-to-website" width="700"]Add Caption[/browser-shot]
+```
+
 ## Gutenberg Devs
 
 1. Clone the repository
