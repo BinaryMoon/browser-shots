@@ -11,7 +11,7 @@
  * @package browser-shots
  */
 
-// Define variable for JS and CSS versioning
+// Define variable for JS and CSS versioning.
 define( 'BROWSER_SHOTS_VERSION', '1.7' );
 
 /**
@@ -53,11 +53,9 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 
 		/**
 		 * Load plugin text domain
-		 *
 		 */
 		public function load_plugin_text_domain() {
 
-			// i18n init.
 			load_plugin_textdomain( 'browser-shots', '', basename( dirname( __FILE__ ) ) . '/languages' );
 
 		}
