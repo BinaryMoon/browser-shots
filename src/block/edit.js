@@ -51,7 +51,7 @@ class Browser_Shots extends Component {
 
 	};
 
-	refresh = ( ) => {
+	refresh = () => {
 		const version = parseInt( this.state.version ) + 1;
 		this.setState( { version: version } );
 	}
@@ -366,9 +366,9 @@ class Browser_Shots extends Component {
 							<RichText
 								tagName="div"
 								className='wp-caption-text'
-								placeholder={ __( 'Enter a caption', 'browser-shots' ) }
-								value={ content }
-								onChange={ ( content ) => this.props.setAttributes( { content: content } ) }
+								placeholder={__( 'Write caption...', 'browser-shots' )}
+								value={content}
+								onChange={( content ) => this.props.setAttributes( { content: content } )}
 							/>
 						</div>
 					</Fragment>
