@@ -269,6 +269,11 @@ class Browser_Shots extends Component {
 						type="text"
 						value={link}
 						onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
+						help={
+							<div>
+								{__( 'By default the image links to the screenshot url.', 'browser-shots' )}
+							</div>
+						}
 					/>
 
 					<ToggleControl
