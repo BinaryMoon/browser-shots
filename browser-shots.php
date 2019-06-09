@@ -127,7 +127,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 <?php
 
 				if ( ! empty( $content ) ) {
-					echo '<p class="wp-caption-text">' . esc_html( $content ) . '</p></div>';
+					echo '<p class="wp-caption-text">' . wp_kses_post( $content ) . '</p></div>';
 				}
 
 				return ob_get_clean();

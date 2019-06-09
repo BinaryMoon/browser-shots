@@ -23,6 +23,7 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
+	RichText,
 } = wp.editor;
 
 
@@ -83,7 +84,7 @@ class Browser_Shots extends Component {
 	render() {
 
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, rel, image_size } = attributes;
+		const { width, height, alt, link, target, rel, image_size, content } = attributes;
 
 		const relOptions = [
 			{
@@ -357,6 +358,13 @@ class Browser_Shots extends Component {
 							}
 						>
 							{this.createPreviewImage()}
+							<RichText
+								tagName="div"
+								className='wp-caption-text'
+								placeholder={ __( 'Enter a caption', 'browser-shots' ) }
+								value={ content }
+								onChange={ ( content ) => this.props.setAttributes( { content: content } ) }
+							/>
 						</div>
 					</Fragment>
 				}
