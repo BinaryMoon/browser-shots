@@ -50,10 +50,14 @@ class Browser_Shots extends Component {
 
 	};
 
+
 	refresh = () => {
+
 		const version = parseInt( this.state.version ) + 1;
-		this.setState( { version: version } );
-	}
+		this.setState( { version } );
+
+	};
+
 
 	urlChange = ( event ) => {
 
@@ -62,6 +66,7 @@ class Browser_Shots extends Component {
 		this.setState( { url: event.target.value } );
 
 	};
+
 
 	createPreviewImage = () => {
 
@@ -77,7 +82,7 @@ class Browser_Shots extends Component {
 			</div>
 		);
 
-	}
+	};
 
 
 	render() {
