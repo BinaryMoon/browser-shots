@@ -71,10 +71,7 @@ class Browser_Shots extends Component {
 	createPreviewImage = () => {
 
 		const { width, height, url } = this.props.attributes;
-
-		const version = this.state.version;
-
-		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}&version=${version}`;
+		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}&version=${this.state.version}`;
 
 		return (
 			<div>
