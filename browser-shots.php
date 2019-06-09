@@ -123,7 +123,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 				}
 
 ?>
-<div class="browser-shot <?php echo $image_class; ?>"><a href="<?php echo esc_url( $link ); ?>" <?php echo $target . $rel; ?>><img src="<?php echo esc_url( $image_uri ); ?>" alt="<?php echo esc_attr( $alt ); ?>" width="<?php echo intval( $width ); ?>" height="<?php echo intval( $height ); ?>" /></a></div>
+<div class="browser-shot <?php echo esc_attr( $image_class ); ?>"><a href="<?php echo esc_url( $link ); ?>" <?php echo $target . $rel; ?>><img src="<?php echo esc_url( $image_uri ); ?>" alt="<?php echo esc_attr( $alt ); ?>" width="<?php echo intval( $width ); ?>" height="<?php echo intval( $height ); ?>" class="<?php echo esc_attr( $image_class ); ?>" /></a></div>
 <?php
 
 				if ( ! empty( $content ) ) {

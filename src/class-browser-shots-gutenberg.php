@@ -189,7 +189,7 @@ class Browser_Shots_Gutenberg {
 			'link'        => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
 			'target'      => sanitize_text_field( $attributes['target'] ),
 			'class'       => sanitize_text_field( $attributes['classname'] ),
-			'image_class' => sanitize_text_field( 'align' . $attributes['align'] ),
+			'image_class' => sanitize_text_field( isset( $attributes['align'] ) ? 'align' . $attributes['align'] : 'alignnone' ),
 			'rel'         => sanitize_text_field( $attributes['rel'] ),
 		);
 
