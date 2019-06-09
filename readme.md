@@ -24,4 +24,5 @@ As of 1.7, there is a Gutenblock for embedded your screenshots.
 1. Clone the repository
 2. Run ```npm install```
 3. Edit the block in ```src/edit.js```
-4. To build run: ```npm run build && wp i18n make-pot . languages/browser-shots.pot --exclude="/src/js,src/block"```
+4. To develop run: ```npm start```
+5. To build for deployment run: ```npm run build && wp i18n make-pot . languages/browser-shots.pot --exclude="/src/js,src/block"```
