@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-import classnames from 'classnames';
 const { Component, Fragment } = wp.element;
 
 const { __, _x } = wp.i18n;
