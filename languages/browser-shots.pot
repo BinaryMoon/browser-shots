@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-06-09T02:53:54+00:00\n"
-"PO-Revision-Date: 2019-06-09T02:53:54+00:00\n"
-"X-Generator: WP-CLI 2.0.1\n"
+"POT-Creation-Date: 2019-06-09T10:11:12+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: browser-shots\n"
 
 #. Plugin Name of the plugin
@@ -149,6 +149,10 @@ msgid "Link Image to URL"
 msgstr ""
 
 #: dist/blocks.build.js:1
+msgid "By default the image links to the screenshot url."
+msgstr ""
+
+#: dist/blocks.build.js:1
 msgid "Open in New Tab"
 msgstr ""
 
@@ -165,5 +169,5 @@ msgid "Find Image"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Enter a caption"
+msgid "Write caption..."
 msgstr ""
