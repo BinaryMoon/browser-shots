@@ -1,6 +1,8 @@
 <?php
 /**
  * Translations for Browser Shots javascript
+ *
+ * @package browser-shots
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -8,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( '_WP_Editors' ) ) {
-    require( ABSPATH . WPINC . '/class-wp-editor.php' );
+	require ABSPATH . WPINC . '/class-wp-editor.php';
 }
 
 

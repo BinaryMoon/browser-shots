@@ -1,2 +1,6 @@
 <?php
-//Kisses from France...
+/**
+ * No peeking!
+ *
+ * @package browser-shots
+ */
