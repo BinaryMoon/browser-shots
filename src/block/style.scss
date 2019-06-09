@@ -1,5 +1,7 @@
 .browser-shot {
-
+	&.aligncenter {
+		margin: 0 auto !important;
+	}
 	a {
 		display: block;
 	}

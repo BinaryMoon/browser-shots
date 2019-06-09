@@ -119,15 +119,15 @@ class Browser_Shots_Gutenberg {
 			'browser-shots/browser-shots',
 			array(
 				'attributes'      => array(
-					'html'        => array(
+					'html'       => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'url'         => array(
+					'url'        => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'width'       => array(
+					'width'      => array(
 						'type'    => 'int',
 						'default' => 600,
 					),
@@ -135,7 +135,7 @@ class Browser_Shots_Gutenberg {
 						'type'    => 'int',
 						'default' => 450,
 					),
-					'alt'         => array(
+					'alt'        => array(
 						'type'    => 'string',
 						'default' => '',
 					),
@@ -143,21 +143,25 @@ class Browser_Shots_Gutenberg {
 						'type'    => 'string',
 						'default' => '',
 					),
-					'target'      => array(
+					'target'     => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'classname'   => array(
+					'classname'  => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'rel'         => array(
+					'rel'        => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'image_size'  => array(
+					'image_size' => array(
 						'type'    => 'string',
 						'default' => 'medium',
+					),
+					'content'    => array(
+						'type'    => 'string',
+						'default' => '',
 					),
 				),
 				'render_callback' => array( $this, 'block_frontend' ),
@@ -189,12 +193,14 @@ class Browser_Shots_Gutenberg {
 			'link'        => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
 			'target'      => sanitize_text_field( $attributes['target'] ),
 			'class'       => sanitize_text_field( $attributes['classname'] ),
-			'image_class' => sanitize_text_field( 'align' . $attributes['align'] ),
+			'image_class' => sanitize_text_field( isset( $attributes['align'] ) ? 'align' . $attributes['align'] : 'alignnone' ),
 			'rel'         => sanitize_text_field( $attributes['rel'] ),
 		);
 
+		$content = ( isset( $attributes['content'] ) && ! empty( $attributes['content'] ) ) ? wp_kses_post( $attributes['content'] ) : '';
+
 		$browsershots = new BrowserShots();
-		return wp_kses_post( $browsershots->shortcode( $args ) );
+		return wp_kses_post( $browsershots->shortcode( $args, $content ) );
 
 	}
 

@@ -23,6 +23,7 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
+	RichText,
 } = wp.editor;
 
 
@@ -35,6 +36,7 @@ class Browser_Shots extends Component {
 		this.state = {
 			html: this.props.attributes.html,
 			welcome: '' === this.props.attributes.url ? true : false,
+			version: '1',
 			url: this.props.attributes.url,
 			width: this.props.attributes.width,
 			height: this.props.attributes.height,
@@ -49,21 +51,10 @@ class Browser_Shots extends Component {
 
 	};
 
-
-	pluginOnClick = () => {
-
-		if ( '' === this.state.url ) {
-			return;
-		}
-
-		// Now Set State
-		this.setState(
-			{
-				welcome: '' === this.props.attributes.url ? true : false,
-			}
-		);
-
-	};
+	refresh = ( ) => {
+		const version = parseInt( this.state.version ) + 1;
+		this.setState( { version: version } );
+	}
 
 	urlChange = ( event ) => {
 
@@ -73,12 +64,13 @@ class Browser_Shots extends Component {
 
 	};
 
-
 	createPreviewImage = () => {
 
 		const { width, height, url } = this.props.attributes;
 
-		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}`;
+		const version = this.state.version;
+
+		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}&version=${version}`;
 
 		return (
 			<div>
@@ -92,7 +84,7 @@ class Browser_Shots extends Component {
 	render() {
 
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, rel, image_size } = attributes;
+		const { width, height, alt, link, target, rel, image_size, content } = attributes;
 
 		const relOptions = [
 			{
@@ -114,7 +106,7 @@ class Browser_Shots extends Component {
 			{
 				icon: 'update',
 				title: __( 'Refresh Image', 'browser-shots' ),
-				onClick: ( e ) => this.pluginOnClick( e )
+				onClick: ( e ) => this.refresh()
 			}
 		];
 
@@ -262,7 +254,7 @@ class Browser_Shots extends Component {
 					</PanelRow>
 
 					<Button
-						onClick={( e ) => { this.pluginOnClick( e ) }}
+						onClick={( e ) => { this.refresh() }}
 						isDefault
 					>
 						{__( 'Refresh Image', 'browser-shots' )}
@@ -366,6 +358,13 @@ class Browser_Shots extends Component {
 							}
 						>
 							{this.createPreviewImage()}
+							<RichText
+								tagName="div"
+								className='wp-caption-text'
+								placeholder={ __( 'Enter a caption', 'browser-shots' ) }
+								value={ content }
+								onChange={ ( content ) => this.props.setAttributes( { content: content } ) }
+							/>
 						</div>
 					</Fragment>
 				}

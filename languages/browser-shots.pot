@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-06-07T04:46:01+00:00\n"
-"PO-Revision-Date: 2019-06-07T04:46:01+00:00\n"
+"POT-Creation-Date: 2019-06-09T02:53:54+00:00\n"
+"PO-Revision-Date: 2019-06-09T02:53:54+00:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: browser-shots\n"
 
@@ -63,10 +63,6 @@ msgstr ""
 msgid "Open Link in new Window?"
 msgstr ""
 
-#: src/class-browser-shots-gutenberg.php:201
-msgid "Browser Shots could not retrieve the image"
-msgstr ""
-
 #: dist/blocks.build.js:1
 msgid "Automatically embed screenshots of websites onto your site."
 msgstr ""
@@ -84,22 +80,6 @@ msgid "None"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Blank"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Parent"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Self"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Top"
-msgstr ""
-
-#: dist/blocks.build.js:1
 msgid "No Follow"
 msgstr ""
 
@@ -109,6 +89,18 @@ msgstr ""
 
 #: dist/blocks.build.js:1
 msgid "Refresh Image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Browser Shots Settings"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Describe the purpose of the image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Leave empty if the image is purely decorative."
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -124,7 +116,32 @@ msgid "Height"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Alt Text"
+msgctxt "Small Image Size"
+msgid "S"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Medium Image Size"
+msgid "M"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Large Image Size"
+msgid "L"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Extra Large Image Size"
+msgid "XL"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Reset Image Size to Default"
+msgid "Reset"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Link Settings"
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -132,11 +149,7 @@ msgid "Link Image to URL"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Target"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "CSS Class Name"
+msgid "Open in New Tab"
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -149,4 +162,8 @@ msgstr ""
 
 #: dist/blocks.build.js:1
 msgid "Find Image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Enter a caption"
 msgstr ""
