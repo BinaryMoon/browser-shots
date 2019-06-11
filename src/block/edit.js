@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-import classnames from 'classnames';
 const { Component, Fragment } = wp.element;
 
 const { __, _x } = wp.i18n;
@@ -23,6 +22,7 @@ const {
 const {
 	InspectorControls,
 	BlockControls,
+	RichText,
 } = wp.editor;
 
 
@@ -35,6 +35,7 @@ class Browser_Shots extends Component {
 		this.state = {
 			html: this.props.attributes.html,
 			welcome: '' === this.props.attributes.url ? true : false,
+			version: '1',
 			url: this.props.attributes.url,
 			width: this.props.attributes.width,
 			height: this.props.attributes.height,
@@ -45,26 +46,27 @@ class Browser_Shots extends Component {
 			rel: this.props.attributes.rel,
 			image_class: this.props.attributes.image_class,
 			image_size: this.props.attributes.image_size,
+			display_link: 'undefined' === typeof this.props.attributes.display_link ? true : this.props.attributes.display_link,
 		};
 
 	};
 
 
-	pluginOnClick = () => {
+	/**
+	 * Reload the image from the image server.
+	 * This allows users to get rid of the 'generating screenshot' message.
+	 */
+	refresh = () => {
 
-		if ( '' === this.state.url ) {
-			return;
-		}
-
-		// Now Set State
-		this.setState(
-			{
-				welcome: '' === this.props.attributes.url ? true : false,
-			}
-		);
+		const version = parseInt( this.state.version ) + 1;
+		this.setState( { version } );
 
 	};
 
+
+	/**
+	 * Update the app state when a new screenshot path is submitted.
+	 */
 	urlChange = ( event ) => {
 
 		this.props.setAttributes( { url: event.target.value } );
@@ -74,11 +76,16 @@ class Browser_Shots extends Component {
 	};
 
 
+	/**
+	 * Create a preview image.
+	 *
+	 * This is a not a complete screenshot image as output by the shortcode. It
+	 * simply has enough info to preview what will be output.
+	 */
 	createPreviewImage = () => {
 
 		const { width, height, url } = this.props.attributes;
-
-		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}`;
+		let mshotsUrl = `https://s0.wordpress.com/mshots/v1/${encodeURI( url )}?w=${width}&h=${height}&version=${this.state.version}`;
 
 		return (
 			<div>
@@ -86,13 +93,13 @@ class Browser_Shots extends Component {
 			</div>
 		);
 
-	}
+	};
 
 
 	render() {
 
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, rel, image_size } = attributes;
+		const { width, height, alt, link, target, rel, image_size, content, display_link } = attributes;
 
 		const relOptions = [
 			{
@@ -114,7 +121,7 @@ class Browser_Shots extends Component {
 			{
 				icon: 'update',
 				title: __( 'Refresh Image', 'browser-shots' ),
-				onClick: ( e ) => this.pluginOnClick( e )
+				onClick: ( e ) => this.refresh()
 			}
 		];
 
@@ -262,7 +269,7 @@ class Browser_Shots extends Component {
 					</PanelRow>
 
 					<Button
-						onClick={( e ) => { this.pluginOnClick( e ) }}
+						onClick={( e ) => { this.refresh() }}
 						isDefault
 					>
 						{__( 'Refresh Image', 'browser-shots' )}
@@ -272,30 +279,56 @@ class Browser_Shots extends Component {
 
 				<PanelBody title={__( 'Link Settings', 'browser-shots' )} initialOpen={false}>
 
-					<TextControl
-						label={__( 'Link Image to URL', 'browser-shots' )}
-						type="text"
-						value={link}
-						onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
-					/>
-
 					<ToggleControl
-						label={__( 'Open in New Tab', 'browser-shots' )}
+						label={__( 'Use link', 'browser-shots' )}
 						onChange={
-							( value ) => {
-								let linkTarget = value ? '_blank' : 'none';
-								this.props.setAttributes( { target: linkTarget } );
+							( display_link ) => {
+								this.props.setAttributes( { display_link } );
+								this.setState( { display_link } );
 							}
 						}
-						checked={target === '_blank'}
+						checked={this.state.display_link}
 					/>
 
-					<SelectControl
-						label={__( 'Rel', 'browser-shots' )}
-						options={relOptions}
-						value={rel}
-						onChange={( value ) => { this.props.setAttributes( { rel: value } ); }}
-					/>
+					{this.state.display_link &&
+						<Fragment>
+							<TextControl
+								label={__( 'Link Image to URL', 'browser-shots' )}
+								type="text"
+								placeholder={this.state.url}
+								value={link}
+								onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
+								help={
+									<div>
+										{__( 'By default the image links to the screenshot url.', 'browser-shots' )}
+									</div>
+								}
+							/>
+
+							<ToggleControl
+								label={__( 'Open in New Tab', 'browser-shots' )}
+								onChange={
+									( value ) => {
+										let linkTarget = value ? '_blank' : 'none';
+										this.props.setAttributes( { target: linkTarget } );
+									}
+								}
+								checked={target === '_blank'}
+							/>
+
+							<ToggleControl
+								label={__( 'Set Nofollow', 'browser-shots' )}
+								onChange={
+									( value ) => {
+										let linkRel = value ? 'nofollow' : '';
+										this.props.setAttributes( { rel: linkRel } );
+									}
+								}
+								checked={rel === 'nofollow'}
+							/>
+
+						</Fragment>
+					}
 
 				</PanelBody>
 			</InspectorControls>
@@ -323,6 +356,7 @@ class Browser_Shots extends Component {
 								<input type="text"
 									id="browser-shots-url"
 									value={this.state.url}
+									placeholder="http://"
 									onChange={
 										( event ) => {
 											this.urlChange( event );
@@ -366,6 +400,13 @@ class Browser_Shots extends Component {
 							}
 						>
 							{this.createPreviewImage()}
+							<RichText
+								tagName="div"
+								className='wp-caption-text'
+								placeholder={__( 'Write caption...', 'browser-shots' )}
+								value={content}
+								onChange={( content ) => this.props.setAttributes( { content: content } )}
+							/>
 						</div>
 					</Fragment>
 				}

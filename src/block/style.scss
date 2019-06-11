@@ -1,5 +1,13 @@
 .browser-shot {
 
+	&.aligncenter {
+
+		max-width: 100% !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+
+	}
+
 	a {
 		display: block;
 	}

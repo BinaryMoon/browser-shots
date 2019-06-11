@@ -4,15 +4,15 @@
  * Plugin URI: https://wordpress.org/plugins/browser-shots/
  * Description: Easily take dynamic screenshots of a website inside of WordPress
  * Author: Ben Gillbanks
- * Version: 1.7
+ * Version: 1.7.1
  * Author URI: https://prothemedesign.com
  * Text Domain: browser-shots
  *
  * @package browser-shots
  */
 
-// Define variable for JS and CSS versioning
-define( 'BROWSER_SHOTS_VERSION', '1.7' );
+// Define variable for JS and CSS versioning.
+define( 'BROWSER_SHOTS_VERSION', '1.7.1' );
 
 /**
  * This program is free software; you can redistribute it and/or
@@ -53,11 +53,9 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 
 		/**
 		 * Load plugin text domain
-		 *
 		 */
 		public function load_plugin_text_domain() {
 
-			// i18n init.
 			load_plugin_textdomain( 'browser-shots', '', basename( dirname( __FILE__ ) ) . '/languages' );
 
 		}
@@ -79,15 +77,16 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			extract(
 				shortcode_atts(
 					array(
-						'url'         => '',
-						'width'       => 600,
-						'height'      => 450,
-						'alt'         => '',
-						'link'        => '',
-						'target'      => '',
-						'class'       => '',
+						'url' => '',
+						'width' => 600,
+						'height' => 450,
+						'alt' => '',
+						'link' => '',
+						'target' => '',
+						'class' => '',
 						'image_class' => 'alignnone',
-						'rel'         => '',
+						'rel' => '',
+						'display_link' => true,
 					),
 					$attributes
 				)
@@ -112,6 +111,8 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			// Get screenshot.
 			$image_uri = $this->get_shot( $url, $width, $height );
 
+			$display_link = (bool) $display_link;
+
 			if ( ! empty( $image_uri ) ) {
 
 				ob_start();
@@ -122,12 +123,22 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 					$image_class = '';
 				}
 
-?>
-<div class="browser-shot <?php echo $image_class; ?>"><a href="<?php echo esc_url( $link ); ?>" <?php echo $target . $rel; ?>><img src="<?php echo esc_url( $image_uri ); ?>" alt="<?php echo esc_attr( $alt ); ?>" width="<?php echo intval( $width ); ?>" height="<?php echo intval( $height ); ?>" /></a></div>
-<?php
+				echo '<div class="browser-shot ' . esc_attr( $image_class ) . '">';
+
+				if ( $display_link ) {
+					echo '<a href="' . esc_url( $link ) . '" ' . $target . $rel . '>';
+				}
+
+				echo '<img src="' . esc_url( $image_uri ) . '" alt="' . esc_attr( $alt ) . '" width="' . intval( $width ) . '" height="' . intval( $height ) . '" class="' . $image_class . '" />';
+
+				if ( $display_link ) {
+					echo '</a>';
+				}
+
+				echo '</div>';
 
 				if ( ! empty( $content ) ) {
-					echo '<p class="wp-caption-text">' . esc_html( $content ) . '</p></div>';
+					echo '<p class="wp-caption-text">' . wp_kses_post( $content ) . '</p></div>';
 				}
 
 				return ob_get_clean();

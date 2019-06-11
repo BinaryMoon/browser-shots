@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-06-07T04:46:01+00:00\n"
-"PO-Revision-Date: 2019-06-07T04:46:01+00:00\n"
-"X-Generator: WP-CLI 2.0.1\n"
+"POT-Creation-Date: 2019-06-11T11:14:53+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: browser-shots\n"
 
 #. Plugin Name of the plugin
@@ -35,36 +35,32 @@ msgstr ""
 msgid "https://prothemedesign.com"
 msgstr ""
 
-#: locale.php:18
+#: locale.php:20
 msgid "Image Url"
 msgstr ""
 
-#: locale.php:19
+#: locale.php:21
 msgid "Image Link Url (optional)"
 msgstr ""
 
-#: locale.php:20
+#: locale.php:22
 msgid "Image Width"
 msgstr ""
 
-#: locale.php:21
+#: locale.php:23
 msgid "Image Height"
 msgstr ""
 
-#: locale.php:22
+#: locale.php:24
 msgid "Image Caption"
 msgstr ""
 
-#: locale.php:23
+#: locale.php:25
 msgid "Image Alt Text"
 msgstr ""
 
-#: locale.php:24
+#: locale.php:26
 msgid "Open Link in new Window?"
-msgstr ""
-
-#: src/class-browser-shots-gutenberg.php:201
-msgid "Browser Shots could not retrieve the image"
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -84,22 +80,6 @@ msgid "None"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Blank"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Parent"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Self"
-msgstr ""
-
-#: dist/blocks.build.js:1
-msgid "Top"
-msgstr ""
-
-#: dist/blocks.build.js:1
 msgid "No Follow"
 msgstr ""
 
@@ -109,6 +89,18 @@ msgstr ""
 
 #: dist/blocks.build.js:1
 msgid "Refresh Image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Browser Shots Settings"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Describe the purpose of the image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Leave empty if the image is purely decorative."
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -124,7 +116,36 @@ msgid "Height"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Alt Text"
+msgctxt "Small Image Size"
+msgid "S"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Medium Image Size"
+msgid "M"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Large Image Size"
+msgid "L"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Extra Large Image Size"
+msgid "XL"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgctxt "Reset Image Size to Default"
+msgid "Reset"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Link Settings"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Use link"
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -132,15 +153,15 @@ msgid "Link Image to URL"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Target"
+msgid "By default the image links to the screenshot url."
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "CSS Class Name"
+msgid "Open in New Tab"
 msgstr ""
 
 #: dist/blocks.build.js:1
-msgid "Rel"
+msgid "Set Nofollow"
 msgstr ""
 
 #: dist/blocks.build.js:1
@@ -149,4 +170,8 @@ msgstr ""
 
 #: dist/blocks.build.js:1
 msgid "Find Image"
+msgstr ""
+
+#: dist/blocks.build.js:1
+msgid "Write caption..."
 msgstr ""
