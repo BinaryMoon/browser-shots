@@ -99,7 +99,7 @@ class Browser_Shots extends Component {
 	render() {
 
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, rel, image_size, content } = attributes;
+		const { width, height, alt, link, target, rel, image_size, content, display_link } = attributes;
 
 		const relOptions = [
 			{
@@ -279,35 +279,55 @@ class Browser_Shots extends Component {
 
 				<PanelBody title={__( 'Link Settings', 'browser-shots' )} initialOpen={false}>
 
-					<TextControl
-						label={__( 'Link Image to URL', 'browser-shots' )}
-						type="text"
-						value={link}
-						onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
-						help={
-							<div>
-								{__( 'By default the image links to the screenshot url.', 'browser-shots' )}
-							</div>
-						}
-					/>
-
 					<ToggleControl
-						label={__( 'Open in New Tab', 'browser-shots' )}
+						label={__( 'Use link', 'browser-shots' )}
 						onChange={
-							( value ) => {
-								let linkTarget = value ? '_blank' : 'none';
-								this.props.setAttributes( { target: linkTarget } );
+							( display_link ) => {
+								this.props.setAttributes( { display_link } );
+								this.setState( { display_link } );
 							}
 						}
-						checked={target === '_blank'}
+						checked={this.state.display_link}
 					/>
 
-					<SelectControl
-						label={__( 'Rel', 'browser-shots' )}
-						options={relOptions}
-						value={rel}
-						onChange={( value ) => { this.props.setAttributes( { rel: value } ); }}
-					/>
+					{this.state.display_link &&
+						<Fragment>
+							<TextControl
+								label={__( 'Link Image to URL', 'browser-shots' )}
+								type="text"
+								value={link}
+								onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
+								help={
+									<div>
+										{__( 'By default the image links to the screenshot url.', 'browser-shots' )}
+									</div>
+								}
+							/>
+
+							<ToggleControl
+								label={__( 'Open in New Tab', 'browser-shots' )}
+								onChange={
+									( value ) => {
+										let linkTarget = value ? '_blank' : 'none';
+										this.props.setAttributes( { target: linkTarget } );
+									}
+								}
+								checked={target === '_blank'}
+							/>
+
+							<ToggleControl
+								label={__( 'Set Nofollow', 'browser-shots' )}
+								onChange={
+									( value ) => {
+										let linkRel = value ? 'nofollow' : '';
+										this.props.setAttributes( { rel: linkRel } );
+									}
+								}
+								checked={rel === 'nofollow'}
+							/>
+
+						</Fragment>
+					}
 
 				</PanelBody>
 			</InspectorControls>
