@@ -155,6 +155,10 @@ class Browser_Shots_Gutenberg {
 						'type'    => 'string',
 						'default' => '',
 					),
+					'display_link' => array(
+						'type' => 'boolean',
+						'default' => true,
+					),
 					'image_size' => array(
 						'type'    => 'string',
 						'default' => 'medium',
