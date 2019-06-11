@@ -92,6 +92,8 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 				)
 			);
 
+			$display_link = filter_var( $display_link, FILTER_VALIDATE_BOOLEAN );
+
 			if ( empty( $alt ) ) {
 				$alt = esc_url( $url );
 			}
