@@ -113,8 +113,6 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			// Get screenshot.
 			$image_uri = $this->get_shot( $url, $width, $height );
 
-			$display_link = (bool) $display_link;
-
 			if ( ! empty( $image_uri ) ) {
 
 				ob_start();
