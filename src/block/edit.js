@@ -46,11 +46,16 @@ class Browser_Shots extends Component {
 			rel: this.props.attributes.rel,
 			image_class: this.props.attributes.image_class,
 			image_size: this.props.attributes.image_size,
+			display_link: 'undefined' === typeof this.props.attributes.display_link ? true : this.props.attributes.display_link,
 		};
 
 	};
 
 
+	/**
+	 * Reload the image from the image server.
+	 * This allows users to get rid of the 'generating screenshot' message.
+	 */
 	refresh = () => {
 
 		const version = parseInt( this.state.version ) + 1;
@@ -59,6 +64,9 @@ class Browser_Shots extends Component {
 	};
 
 
+	/**
+	 * Update the app state when a new screenshot path is submitted.
+	 */
 	urlChange = ( event ) => {
 
 		this.props.setAttributes( { url: event.target.value } );
@@ -68,6 +76,12 @@ class Browser_Shots extends Component {
 	};
 
 
+	/**
+	 * Create a preview image.
+	 *
+	 * This is a not a complete screenshot image as output by the shortcode. It
+	 * simply has enough info to preview what will be output.
+	 */
 	createPreviewImage = () => {
 
 		const { width, height, url } = this.props.attributes;
