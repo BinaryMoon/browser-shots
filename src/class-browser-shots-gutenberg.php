@@ -156,7 +156,7 @@ class Browser_Shots_Gutenberg {
 						'default' => '',
 					),
 					'display_link' => array(
-						'type' => 'boolean',
+						'type'    => 'boolean',
 						'default' => true,
 					),
 					'image_size'   => array(
@@ -166,10 +166,6 @@ class Browser_Shots_Gutenberg {
 					'content'      => array(
 						'type'    => 'string',
 						'default' => '',
-					),
-					'display_link' => array(
-						'type'    => 'bool',
-						'default' => true,
 					),
 				),
 				'render_callback' => array( $this, 'block_frontend' ),
