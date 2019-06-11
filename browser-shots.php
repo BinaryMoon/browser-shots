@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/browser-shots/
  * Description: Easily take dynamic screenshots of a website inside of WordPress
  * Author: Ben Gillbanks
- * Version: 1.7.1
+ * Version: 1.7.2
  * Author URI: https://prothemedesign.com
  * Text Domain: browser-shots
  *
@@ -12,7 +12,7 @@
  */
 
 // Define variable for JS and CSS versioning.
-define( 'BROWSER_SHOTS_VERSION', '1.7.1' );
+define( 'BROWSER_SHOTS_VERSION', '1.7.2' );
 
 /**
  * This program is free software; you can redistribute it and/or
@@ -91,6 +91,8 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 					$attributes
 				)
 			);
+
+			$display_link = filter_var( $display_link, FILTER_VALIDATE_BOOLEAN );
 
 			if ( empty( $alt ) ) {
 				$alt = esc_url( $url );

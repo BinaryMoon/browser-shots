@@ -119,51 +119,51 @@ class Browser_Shots_Gutenberg {
 			'browser-shots/browser-shots',
 			array(
 				'attributes'      => array(
-					'html'       => array(
+					'html'         => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'url'        => array(
+					'url'          => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'width'      => array(
+					'width'        => array(
 						'type'    => 'int',
 						'default' => 600,
 					),
-					'height'     => array(
+					'height'       => array(
 						'type'    => 'int',
 						'default' => 450,
 					),
-					'alt'        => array(
+					'alt'          => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'link'       => array(
+					'link'         => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'target'     => array(
+					'target'       => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'classname'  => array(
+					'classname'    => array(
 						'type'    => 'string',
 						'default' => '',
 					),
-					'rel'        => array(
+					'rel'          => array(
 						'type'    => 'string',
 						'default' => '',
 					),
 					'display_link' => array(
-						'type' => 'boolean',
+						'type'    => 'boolean',
 						'default' => true,
 					),
-					'image_size' => array(
+					'image_size'   => array(
 						'type'    => 'string',
 						'default' => 'medium',
 					),
-					'content'    => array(
+					'content'      => array(
 						'type'    => 'string',
 						'default' => '',
 					),
