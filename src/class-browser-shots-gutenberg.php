@@ -199,6 +199,7 @@ class Browser_Shots_Gutenberg {
 			'class'       => sanitize_text_field( $attributes['classname'] ),
 			'image_class' => sanitize_text_field( isset( $attributes['align'] ) ? 'align' . $attributes['align'] : 'alignnone' ),
 			'rel'         => sanitize_text_field( $attributes['rel'] ),
+			'display_link' => (bool) $attributes['display_link'],
 		);
 
 		$content = ( isset( $attributes['content'] ) && ! empty( $attributes['content'] ) ) ? wp_kses_post( $attributes['content'] ) : '';
