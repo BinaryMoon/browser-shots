@@ -32,6 +32,7 @@ Use the `[browser-shot]` shortcode to automate the process of taking website scr
 * target - browser target. Set to _blank to open in a new window
 * class - add a class to the browsershots wrapper
 * image_class - change the default browsershots image class from alignnone to your chosen class
+* display_link (true or false - default true) to display a link in your screenshot
 
 = Multisite Compatibility =
 
