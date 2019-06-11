@@ -295,6 +295,7 @@ class Browser_Shots extends Component {
 							<TextControl
 								label={__( 'Link Image to URL', 'browser-shots' )}
 								type="text"
+								placeholder={this.state.url}
 								value={link}
 								onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
 								help={
@@ -355,6 +356,7 @@ class Browser_Shots extends Component {
 								<input type="text"
 									id="browser-shots-url"
 									value={this.state.url}
+									placeholder="http://"
 									onChange={
 										( event ) => {
 											this.urlChange( event );
