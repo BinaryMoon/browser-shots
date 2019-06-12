@@ -3,7 +3,7 @@ Contributors: BinaryMoon, kevinlearynet, ronalfy
 Tags: screenshot, browser, browser shot, blocks, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 
 Automate the process of taking website screenshots.
 
@@ -24,15 +24,15 @@ Use the `[browser-shot]` shortcode to automate the process of taking website scr
 
 = Available Parameters =
 
-* url (required) - the url of the link to shorten
-* width - the width of the image
-* height - the height of the image
-* alt - the image alt text
-* link - where the image links. Left blank it will point to the website where the screenshot is being taken
-* target - browser target. Set to _blank to open in a new window
-* class - add a class to the browsershots wrapper
-* image_class - change the default browsershots image class from alignnone to your chosen class
-* display_link (true or false - default true) to display a link in your screenshot
+* *url (required)* - the url of the link to shorten
+* *width* - the width of the image
+* *height* - the height of the image
+* *alt* - the image alt text
+* *link* - where the image links. Left blank it will point to the website where the screenshot is being taken. Use _PERMALINK_ to use the path for the current page or post.
+* *target* - browser target. Set to _blank to open in a new window
+* *class* - add a class to the browsershots wrapper
+* *image_class* - change the default browsershots image class from alignnone to your chosen class
+* *display_link* - (true or false - default true) to display a link in your screenshot
 
 = Multisite Compatibility =
 
@@ -55,6 +55,10 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 3. The formatted front-end view of generated screenshots.
 
 == Changelog ==
+
+= 1.7.3 - 12th June 2019 =
+* Add PERMALINK as a link property. If you set the link url to PERMALINK then the url will point to the currrent page or post.
+* Improve the default alt text. Previously it would display the url for the screenshot, but this could be messy, and is not actually useful. Now displays "Screenshot from domain-name".
 
 = 1.7.2 - 11th June 2019 =
 * Ensuring display_link is a boolean in the shortcode.
