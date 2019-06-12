@@ -3,7 +3,7 @@ Contributors: BinaryMoon, kevinlearynet, ronalfy
 Tags: screenshot, browser, browser shot, blocks, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.7.2
+Stable tag: 1.7.4
 
 Automate the process of taking website screenshots.
 
@@ -33,6 +33,7 @@ Use the `[browser-shot]` shortcode to automate the process of taking website scr
 * class - add a class to the browsershots wrapper
 * image_class - change the default browsershots image class from alignnone to your chosen class
 * display_link (true or false - default true) to display a link in your screenshot
+* post_links (true or false - default false) to link to the permalink of the post the screenshot is on
 
 = Multisite Compatibility =
 
@@ -55,6 +56,9 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 3. The formatted front-end view of generated screenshots.
 
 == Changelog ==
+
+= 1.7.4 12th June 2019
+* Added option to allow screenshot to link to the post's URL.
 
 = 1.7.2 - 11th June 2019 =
 * Ensuring display_link is a boolean in the shortcode.
@@ -116,8 +120,11 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 == Upgrade Notice ==
 
+= 1.7.4 =
+Added option to allow screenshot to link to the post's URL.
+
 = 1.7.2 =
-* Ensuring display_link is a boolean in the shortcode.
+Ensuring display_link is a boolean in the shortcode.
 
 = 1.7 =
 Add Gutenberg block for including Browser Shots.
