@@ -95,15 +95,17 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			$display_link = filter_var( $display_link, FILTER_VALIDATE_BOOLEAN );
 
 			if ( empty( $alt ) ) {
+
 				$parse = wp_parse_url( esc_url( $url ) );
 
 				if ( $parse['host'] ) {
 					// translators: %s = domain name for site that is having a screenshot taken.
-					$alt = printf( __( 'Screenshot of %s', 'browser-shots' ), $parse['host'] );
+					$alt = sprintf( __( 'Screenshot of %s', 'browser-shots' ), $parse['host'] );
 				} else {
 					// Fallback in case of relative path or other problem.
 					$alt = esc_url( $url );
 				}
+
 			}
 
 			// Use the permalink for the current page.
