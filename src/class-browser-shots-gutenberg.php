@@ -167,6 +167,10 @@ class Browser_Shots_Gutenberg {
 						'type'    => 'string',
 						'default' => '',
 					),
+					'post_links'    => array(
+						'type'    => 'boolean',
+						'default' => false,
+					),
 				),
 				'render_callback' => array( $this, 'block_frontend' ),
 			)
@@ -190,16 +194,17 @@ class Browser_Shots_Gutenberg {
 		}
 
 		$args = array(
-			'url'         => esc_url_raw( $attributes['url'] ),
-			'width'       => absint( $attributes['width'] ),
-			'height'      => absint( $attributes['height'] ),
-			'alt'         => sanitize_text_field( $attributes['alt'] ),
-			'link'        => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
-			'target'      => sanitize_text_field( $attributes['target'] ),
-			'class'       => sanitize_text_field( $attributes['classname'] ),
-			'image_class' => sanitize_text_field( isset( $attributes['align'] ) ? 'align' . $attributes['align'] : 'alignnone' ),
-			'rel'         => sanitize_text_field( $attributes['rel'] ),
+			'url'          => esc_url_raw( $attributes['url'] ),
+			'width'        => absint( $attributes['width'] ),
+			'height'       => absint( $attributes['height'] ),
+			'alt'          => sanitize_text_field( $attributes['alt'] ),
+			'link'         => ! empty( $attributes['link'] ) ? esc_url_raw( $attributes['link'] ) : '',
+			'target'       => sanitize_text_field( $attributes['target'] ),
+			'class'        => sanitize_text_field( $attributes['classname'] ),
+			'image_class'  => sanitize_text_field( isset( $attributes['align'] ) ? 'align' . $attributes['align'] : 'alignnone' ),
+			'rel'          => sanitize_text_field( $attributes['rel'] ),
 			'display_link' => (bool) $attributes['display_link'],
+			'post_links'   => (bool) $attributes['post_links'],
 		);
 
 		$content = ( isset( $attributes['content'] ) && ! empty( $attributes['content'] ) ) ? wp_kses_post( $attributes['content'] ) : '';
