@@ -105,6 +105,10 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 					$alt = esc_url( $url );
 				}
 			}
+
+			// Use the permalink for the current page.
+			if ( 'PERMALINK' === $link || 'http://PERMALINK' === $link ) {
+				$link = get_the_permalink();
 			}
 
 			if ( empty( $link ) ) {
