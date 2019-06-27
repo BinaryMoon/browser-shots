@@ -89,7 +89,8 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 						'display_link' => true,
 						'post_links'   => false,
 					),
-					$attributes
+					$attributes,
+					'browser-shots'
 				)
 			);
 
@@ -98,7 +99,17 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			$post_links   = filter_var( $post_links, FILTER_VALIDATE_BOOLEAN );
 
 			if ( empty( $alt ) ) {
-				$alt = esc_url( $url );
+
+				$parse = wp_parse_url( esc_url( $url ) );
+
+				if ( $parse['host'] ) {
+					// translators: %s = domain name for site that is having a screenshot taken.
+					$alt = sprintf( __( 'Screenshot of %s', 'browser-shots' ), $parse['host'] );
+				} else {
+					// Fallback in case of relative path or other problem.
+					$alt = esc_url( $url );
+				}
+
 			}
 
 			if ( $post_links ) {

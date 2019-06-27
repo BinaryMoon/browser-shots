@@ -57,8 +57,13 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 == Changelog ==
 
-= 1.7.4 12th June 2019
+= 1.7.4 - 27th June 2019 =
+* Add a $shortcode parameter to the shortcode_atts function call so that the shortcode properties can be filtered.
 * Added option to allow screenshot to link to the post's URL.
+
+= 1.7.3 - 12th June 2019 =
+* Add PERMALINK as a link property. If you set the link url to PERMALINK then the url will point to the currrent page or post.
+* Improve the default alt text. Previously it would display the url for the screenshot, but this could be messy, and is not actually useful. Now displays "Screenshot from domain-name".
 
 = 1.7.2 - 11th June 2019 =
 * Ensuring display_link is a boolean in the shortcode.

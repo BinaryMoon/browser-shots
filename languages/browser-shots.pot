@@ -35,6 +35,11 @@ msgstr ""
 msgid "https://prothemedesign.com"
 msgstr ""
 
+#. translators: %s = domain name for site that is having a screenshot taken.
+#: browser-shots.php:102
+msgid "Screenshot of %s"
+msgstr ""
+
 #: locale.php:20
 msgid "Image Url"
 msgstr ""
