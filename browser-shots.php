@@ -88,7 +88,8 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 						'rel' => '',
 						'display_link' => true,
 					),
-					$attributes
+					$attributes,
+					'browser-shots'
 				)
 			);
 
