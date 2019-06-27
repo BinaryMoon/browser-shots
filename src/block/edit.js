@@ -47,6 +47,7 @@ class Browser_Shots extends Component {
 			image_class: this.props.attributes.image_class,
 			image_size: this.props.attributes.image_size,
 			display_link: 'undefined' === typeof this.props.attributes.display_link ? true : this.props.attributes.display_link,
+			post_links: 'undefined' === typeof this.props.attributes.display_link ? false : this.props.attributes.display_link,
 		};
 
 	};
@@ -99,7 +100,7 @@ class Browser_Shots extends Component {
 	render() {
 
 		const { attributes } = this.props;
-		const { width, height, alt, link, target, rel, image_size, content, display_link } = attributes;
+		const { width, height, alt, link, target, rel, image_size, content, display_link, post_links } = attributes;
 
 		const relOptions = [
 			{
@@ -283,50 +284,72 @@ class Browser_Shots extends Component {
 						label={__( 'Use link', 'browser-shots' )}
 						onChange={
 							( display_link ) => {
-								this.props.setAttributes( { display_link } );
-								this.setState( { display_link } );
+								this.props.setAttributes( { display_link: display_link } );
+								this.setState( { display_link: display_link } );
 							}
 						}
 						checked={this.state.display_link}
 					/>
+					{ this.state.display_link &&
+						<ToggleControl
+							label={__( 'Use Post Permalink as Link', 'browser-shots' )}
+							onChange={
+								( post_links ) => {
+									this.props.setAttributes( { post_links } );
+									this.setState( { post_links } );
+								}
+							}
+							checked={this.state.post_links}
+							help={
+								<div>
+									{__( 'Choose to use the URl that the screenshot is on as the link.', 'browser-shots' )}
+								</div>
+							}
+						/>
+					}
 
-					{this.state.display_link &&
+					{this.state.display_link && ! post_links &&
 						<Fragment>
-							<TextControl
-								label={__( 'Link Image to URL', 'browser-shots' )}
-								type="text"
-								placeholder={this.state.url}
-								value={link}
-								onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
-								help={
-									<div>
-										{__( 'By default the image links to the screenshot url.', 'browser-shots' )}
-									</div>
+							<Fragment>
+								<TextControl
+									label={__( 'Link Image to URL', 'browser-shots' )}
+									type="text"
+									placeholder={this.state.url}
+									value={link}
+									onChange={( value ) => { this.props.setAttributes( { link: value } ); }}
+									help={
+										<div>
+											{__( 'By default the image links to the screenshot url.', 'browser-shots' )}
+										</div>
+									}
+								/>
+
+							</Fragment>
+						</Fragment>
+					}
+					{ this.state.display_link &&
+						<Fragment>
+							<ToggleControl
+							label={__( 'Open in New Tab', 'browser-shots' )}
+							onChange={
+								( value ) => {
+									let linkTarget = value ? '_blank' : 'none';
+									this.props.setAttributes( { target: linkTarget } );
 								}
+							}
+							checked={target === '_blank'}
 							/>
 
 							<ToggleControl
-								label={__( 'Open in New Tab', 'browser-shots' )}
-								onChange={
-									( value ) => {
-										let linkTarget = value ? '_blank' : 'none';
-										this.props.setAttributes( { target: linkTarget } );
-									}
+							label={__( 'Set Nofollow', 'browser-shots' )}
+							onChange={
+								( value ) => {
+									let linkRel = value ? 'nofollow' : '';
+									this.props.setAttributes( { rel: linkRel } );
 								}
-								checked={target === '_blank'}
+							}
+							checked={rel === 'nofollow'}
 							/>
-
-							<ToggleControl
-								label={__( 'Set Nofollow', 'browser-shots' )}
-								onChange={
-									( value ) => {
-										let linkRel = value ? 'nofollow' : '';
-										this.props.setAttributes( { rel: linkRel } );
-									}
-								}
-								checked={rel === 'nofollow'}
-							/>
-
 						</Fragment>
 					}
 
