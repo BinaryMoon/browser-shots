@@ -47,7 +47,7 @@ class Browser_Shots extends Component {
 			image_class: this.props.attributes.image_class,
 			image_size: this.props.attributes.image_size,
 			display_link: 'undefined' === typeof this.props.attributes.display_link ? true : this.props.attributes.display_link,
-			post_links: 'undefined' === typeof this.props.attributes.display_link ? false : this.props.attributes.display_link,
+			post_links: 'undefined' === typeof this.props.attributes.post_links ? false : this.props.attributes.post_links,
 		};
 
 	};
