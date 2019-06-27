@@ -94,7 +94,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 				)
 			);
 
-			// Filter booleans
+			// Filter booleans.
 			$display_link = filter_var( $display_link, FILTER_VALIDATE_BOOLEAN );
 			$post_links   = filter_var( $post_links, FILTER_VALIDATE_BOOLEAN );
 
@@ -113,8 +113,12 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 			}
 
 			if ( $post_links ) {
-				global $post;
-				$link = esc_url( get_permalink( $post->ID ) );
+				$link = esc_url( get_permalink( get_the_ID() ) );
+			}
+
+			// Use the permalink for the current page.
+			if ( 'PERMALINK' === $link || 'http://PERMALINK' === $link ) {
+				$link = esc_url( get_permalink( get_the_ID() ) );
 			}
 
 			if ( empty( $link ) ) {
