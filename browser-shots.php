@@ -183,7 +183,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 		 * @param int    $height Height of screenshot.
 		 * @return string
 		 */
-		public function get_shot( $url = '', $width = 600, $height = 450 ) {
+		public static function get_shot( $url = '', $width = 600, $height = 450 ) {
 
 			// Image found.
 			if ( '' !== $url ) {
