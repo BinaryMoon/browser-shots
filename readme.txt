@@ -75,7 +75,7 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 == Changelog ==
 
-= 1.7.4 - 27th June 2019 =
+= 1.7.4 - 15th July 2019 =
 * Add a $shortcode parameter to the shortcode_atts function call so that the shortcode properties can be filtered.
 * Added option to allow screenshot to link to the post's URL.
 * Make get_shots static so it can be used outside of the shortcode/ gutenberg block.
