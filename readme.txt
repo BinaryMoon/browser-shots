@@ -35,6 +35,24 @@ Use the `[browser-shot]` shortcode to automate the process of taking website scr
 * display_link (true or false - default true) to display a link in your screenshot
 * post_links (true or false - default false) to link to the permalink of the post the screenshot is on
 
+= Generating Screenshots with code =
+
+If you want to create screenshots in a theme using this plugin then you can do so using the `BrowserShots::get_shot` method.
+
+For example:
+
+`<img src="<?php echo BrowserShots::get_shot( 'https://prothemedesign.com', 600, 450 ); ?>" />`
+
+Keep in mind that the plugin must be installed and activated for this to work.
+
+The get_shot method has 3 parameters.
+
+1. The url.
+2. The width.
+3. The height.
+
+The other parameters, from the shotcode, can be implemented manually when outputting the html.
+
 = Multisite Compatibility =
 
 The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the [Network Activate](http://codex.wordpress.org/Create_A_Network#WordPress_Plugins) feature to enable the shortcode on every site. If you only want to enable the shortcode for a specific site, activate the plugin for that site only.
@@ -60,6 +78,7 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 = 1.7.4 - 27th June 2019 =
 * Add a $shortcode parameter to the shortcode_atts function call so that the shortcode properties can be filtered.
 * Added option to allow screenshot to link to the post's URL.
+* Make get_shots static so it can be used outside of the shortcode/ gutenberg block.
 
 = 1.7.3 - 12th June 2019 =
 * Add PERMALINK as a link property. If you set the link url to PERMALINK then the url will point to the currrent page or post.
