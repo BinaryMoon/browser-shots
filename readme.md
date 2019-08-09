@@ -17,7 +17,7 @@
 
 ## Gutenberg
 
-As of 1.7, there is a Gutenblock for embedded your screenshots.
+As of 1.7, there is a Gutenblock for embedding your screenshots.
 
 ## Gutenberg Devs
 
