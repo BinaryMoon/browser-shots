@@ -11,7 +11,7 @@
 		"po2json": "^1.0.0-alpha"
 	},
 	"devDependencies": {
-		"cgb-scripts": "^1.17.0",
+		"cgb-scripts": "^1.20.0",
 		"classnames": "^2.2.6"
 	}
 }
