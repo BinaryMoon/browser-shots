@@ -133,7 +133,7 @@ class Browser_Shots extends Component {
 				<PanelBody title={__( 'Browser Shots Settings', 'browser-shots' )}>
 
 					<TextareaControl
-						label={__( 'Alt Text (Alternative Text)' )}
+						label={__( 'Alt Text (Alternative Text)', 'browser-shots' )}
 						value={alt}
 						onChange={( value ) => { this.props.setAttributes( { alt: value } ); }}
 						help={
