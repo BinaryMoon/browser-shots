@@ -102,7 +102,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 
 				$parse = wp_parse_url( esc_url( $url ) );
 
-				if ( $parse['host'] ) {
+				if ( ! empty( $parse['host'] ) ) {
 					// translators: %s = domain name for site that is having a screenshot taken.
 					$alt = sprintf( __( 'Screenshot of %s', 'browser-shots' ), $parse['host'] );
 				} else {
