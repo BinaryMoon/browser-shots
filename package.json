@@ -8,10 +8,8 @@
 		"eject": "cgb-scripts eject"
 	},
 	"dependencies": {
-		"po2json": "^1.0.0-alpha"
-	},
-	"devDependencies": {
-		"cgb-scripts": "^1.20.0",
+		"po2json": "^1.0.0-beta-3",
+		"cgb-scripts": "^1.23.1",
 		"classnames": "^2.2.6"
 	}
 }
