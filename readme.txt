@@ -2,7 +2,7 @@
 Contributors: BinaryMoon, kevinlearynet, ronalfy
 Tags: screenshot, browser, browser shot, blocks, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
 Requires at least: 4.0
-Tested up to: 5.7
+Tested up to: 5.8
 Stable tag: 1.7.5
 
 Automate the process of taking website screenshots.
@@ -10,6 +10,10 @@ Automate the process of taking website screenshots.
 == Description ==
 
 Use the `[browser-shot]` shortcode to automate the process of taking website screenshots. An icon is also added to the TinyMCE editor to make the shortcode creation process easy.
+
+The plugin uses the 'mshots' functionality, from WordPress.com, to automatically take screenshots of websites. This function is free for non-commercial use.
+
+The images are stored on the wordpress.com servers and are not saved onto your own website. The images are cached for roughly 24 hours before being generated again.
 
 = Shortcode Preview =
 
@@ -74,6 +78,9 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 3. The formatted front-end view of generated screenshots.
 
 == Changelog ==
+
+= 1.7.6 - 18th June 2021 =
+* Fix possible XSS vulnerability as reported by WPScan.
 
 = 1.7.5 - 27th January 2021 =
 * Fix variable comparison that could cause errors in some situations.
