@@ -141,7 +141,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 				ob_start();
 
 				if ( ! empty( $content ) ) {
-					echo '<div class="wp-caption ' . $image_class . '" style="width:' . ( intval( $width ) + 10 ) . 'px;">';
+					echo '<div class="wp-caption ' . esc_attr( $image_class ) . '" style="width:' . ( intval( $width ) + 10 ) . 'px;">';
 					// Reset image_class so it's not used again.
 					$image_class = '';
 				}
@@ -152,7 +152,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 					echo '<a href="' . esc_url( $link ) . '" ' . $target . $rel . '>';
 				}
 
-				echo '<img src="' . esc_url( $image_uri ) . '" alt="' . esc_attr( $alt ) . '" width="' . intval( $width ) . '" height="' . intval( $height ) . '" class="' . $image_class . '" />';
+				echo '<img src="' . esc_url( $image_uri ) . '" alt="' . esc_attr( $alt ) . '" width="' . intval( $width ) . '" height="' . intval( $height ) . '" class="' . esc_attr( $image_class ) . '" />';
 
 				if ( $display_link ) {
 					echo '</a>';
