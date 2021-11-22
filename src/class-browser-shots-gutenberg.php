@@ -25,7 +25,7 @@ class Browser_Shots_Gutenberg {
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'browser_shots_block_assets' ) );
 		add_action( 'enqueue_block_assets', array( $this, 'add_frontend_styles' ) );
-		add_action( 'init', array( $this, 'register_block' ) );
+		add_action( 'init', array( $this, 'register_bs_block' ) );
 
 	}
 
@@ -109,7 +109,7 @@ class Browser_Shots_Gutenberg {
 	 *
 	 * @since 2.7.0
 	 */
-	public function register_block() {
+	public function register_bs_block() {
 
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
