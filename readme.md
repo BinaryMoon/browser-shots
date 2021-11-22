@@ -1,6 +1,6 @@
 # Browser Shots
 
-<a href="https://wordpress.org/plugins/browser-shots/">Browser Shots is a WordPress plugin</a> to automate the process of taking website screenshots.
+[Browser Shots is a WordPress plugin](https://wordpress.org/plugins/browser-shots/) to automate the process of taking website screenshots.
 
 ## Shortcode Arguments
 
