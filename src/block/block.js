@@ -13,8 +13,9 @@ import edit from './edit';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
+
 /**
- * Register: aa Gutenberg Block.
+ * Register: A Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
@@ -59,3 +60,4 @@ registerBlockType(
 
 	}
 );
+

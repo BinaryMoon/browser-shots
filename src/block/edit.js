@@ -370,7 +370,7 @@ class Browser_Shots extends Component {
 								<input type="text"
 									id="browser-shots-url"
 									value={this.state.url}
-									placeholder="http://"
+									placeholder="https://"
 									onChange={
 										( event ) => {
 											this.urlChange( event );
@@ -383,7 +383,7 @@ class Browser_Shots extends Component {
 									className="button button-primary"
 									style={{ marginTop: '25px' }}
 									type="submit" id="browsershots-input-submit"
-									value={__( 'Find Image', 'browser-shots' )}
+									value={__( 'Load Image', 'browser-shots' )}
 									onClick={
 										() => {
 											if ( '' !== this.props.attributes.url ) {
