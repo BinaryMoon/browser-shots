@@ -79,6 +79,11 @@ The *Browser Shots* plugin is compatibly with WordPress Multisite, just use the 
 
 == Changelog ==
 
+= 1.7.7 - 22nd November 2021 =
+* Fix broken images (the image url moved - thanks @idanka for finding the fix).
+* Small tweaks and improvements to the UX
+* Update scripts and packages to the latest version.
+
 = 1.7.6 - 18th June 2021 =
 * Fix possible XSS vulnerability as reported by WPScan.
 
