@@ -193,7 +193,7 @@ if ( ! class_exists( 'BrowserShots' ) ) {
 					'h' => intval( $height ),
 				);
 
-				return add_query_arg( $query_args, 'https://s0.wordpress.com/mshots/v1/' . rawurlencode( esc_url( $url ) ) );
+				return add_query_arg( $query_args, 'https://s0.wp.com/mshots/v1/' . rawurlencode( esc_url( $url ) ) );
 
 			}
 
