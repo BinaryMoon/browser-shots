@@ -2,7 +2,7 @@
 Contributors: BinaryMoon, kevinlearynet, ronalfy
 Tags: screenshot, browser, browser shot, blocks, generator, tool, automatic, shortcode, automate, screenshots, shots, web browser, window, snap, website, website screenshot, website preview
 Requires at least: 4.0
-Tested up to: 6.2.0
+Tested up to: 6.5.0
 Stable tag: 1.7.5
 
 Automate the process of taking website screenshots.
